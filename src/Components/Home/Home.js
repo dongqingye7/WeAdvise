@@ -5,9 +5,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CalendarComponent from './CalendarComponent';
 import UserInfo from './UserInfo';
-import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card';
 
 function Home() {
+
   return (
     <div className="Home">]
     <Container>

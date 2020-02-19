@@ -6,8 +6,11 @@ import Col from 'react-bootstrap/Col';
 import CalendarComponent from './CalendarComponent';
 import UserInfo from './UserInfo';
 import Card from 'react-bootstrap/Card';
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 51df72ca4d44c67d560c512b7a494ed1725769cd
 
 function Home() {
 

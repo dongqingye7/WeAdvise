@@ -1,19 +1,30 @@
 import React from 'react';
 import './style.css';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 class CourseListApp extends React.Component {
   constructor (props){
-    super ();
+    super (props);
+    this.state={
+      AllCourses: AllCourses
+    };
+    this.deleteCourse = this.deleteCourse.bind(this);
+  }
+
+  deleteCourse(index){
+    AllCourses.splice(index,1);
+    this.setState(AllCourses=this.state.AllCourses);
   }
   render (){
     return (
       <div>
         <AppJumbotron title="Course Checklist" />
-        <ItemList />
+        <ItemList deleteCourse={this.deleteCourse}/>
         <br />
         <br />
         <br />
-        <ItemCount count={allTheThings.length} />
+        <CourseCount count={AllCourses.length} />
       </div>
     );
   }
@@ -21,13 +32,13 @@ class CourseListApp extends React.Component {
 
 class Item extends React.Component {
   constructor (props){
-    super ();
-
+    super (props);
     this.state = {
       checked: false
     };
 
-    this.handleClick = this.handleClick.bind(this);    
+    this.handleClick = this.handleClick.bind(this); 
+    this.deleteClick = this.deleteClick.bind(this);   
   }
   handleClick (e){
     this.setState({
@@ -35,12 +46,22 @@ class Item extends React.Component {
     });
 
   }
+
+  deleteClick(){
+    var index = parseInt(this.props.index);
+    console.log(index);
+    this.props.deleteCourse(index);
+
+  }
   render (){
-    let text = this.state.checked ? <strike>{this.props.message}</strike> : this.props.message;
+    let text = this.state.checked ? <strike>{this.props.courseName}</strike> : this.props.courseName;
     return (
         <div className="row">
           <div className="col-md-12">
-            <input type="checkbox" onClick={this.handleClick} />&nbsp;{text}
+            <input type="checkbox" onClick={this.handleClick} />&nbsp;{text}&nbsp;
+            <IconButton aria-label="delete" onClick={this.deleteClick}>
+              <DeleteIcon />
+            </IconButton>
             <hr />
           </div>
         </div>
@@ -48,31 +69,33 @@ class Item extends React.Component {
   }
 }
 
-let item2 = <Item message="CSE 1105 Introduction to CSE" />;
-let item3 = <Item message="CSE 1320 Intermediate Programming" />;
-let item4 = <Item message="CSE 1325 Object-Oriented Programming" />;
+var course1 = "CSE 1105 Introduction to CSE";
+var course2 = "CSE 1320 Intermediate Programming";
+var course3 = "CSE 1325 Object-Oriented Programming";
 
-let allTheThings = [item2, item3, item4];
+var AllCourses = [course1, course2, course3];
 
 class ItemList extends React.Component {
-  constructor (props){
-    super ();
-  }
+
   render (){
-    let items = allTheThings.map(thing => thing);
-    return (
-        <h4>{items}</h4>
+    var courses = AllCourses.map((course, index)=>{
+        return(
+          <Item key={index} courseName={course} deleteCourse={this.props.deleteCourse}/>
+        );
+    });
+    return(
+      <ul>{courses}</ul>
     );
   }
 }
 
-class ItemCount extends React.Component {
+class CourseCount extends React.Component {
   constructor (props){
     super ();
   }
   render (){
     return (
-      <h4>There are {this.props.count} items on your list</h4>
+      <h4>There are {this.props.count} courses on your Course Checklist</h4>
     );
   }
 }
@@ -81,23 +104,14 @@ class AppJumbotron extends React.Component {
   render (){
     return (
       <div className="jumbotron">
-        <h2 style={
-          {textAlign: "center",
-          backgroundColor: '#61DAFB'}}>
+        <h2 style={{textAlign: "center",}}>
           {this.props.title}
         </h2>
+
       </div>
     );
   }
 }
 
-class AppFooter extends React.Component {
-  render (){
-    return (
-      <div className="text-muted">
-        <small>&copy; {new Date().getFullYear()}</small>
-      </div>
-    );
-  }
-}
+
 export default CourseListApp;

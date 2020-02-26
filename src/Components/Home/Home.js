@@ -5,12 +5,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CalendarComponent from './CalendarComponent';
 import UserInfo from './UserInfo';
-import Card from 'react-bootstrap/Card';
+import AdvisorInfo from './AdvisorInfo';
 
 function Home() {
 
   return (
-    <div className="Home">]
+    <div className="Home">
+      
     <Container>
       <Row>
         <Col>
@@ -21,15 +22,10 @@ function Home() {
           <CalendarComponent />
         </Col>
         <Col>
-          <Card>
-            <h4 className="card-header"> Advisor Info</h4>
-          </Card>
+          <AdvisorInfo />
         </Col>
       </Row>
     </Container>
-
-
-
     </div>
   );
 }

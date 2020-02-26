@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Card from 'react-bootstrap/Card';
+
 
 
 class UserInfo extends Component {
@@ -14,16 +16,16 @@ class UserInfo extends Component {
     }
     render() { 
         return (
-            <div className="card h-100">
-                <h4 className="card-header">My Information</h4>
-                <div className="card-body">
-                    <p className="card-text">Name: {this.state.firstName+" "+this.state.lastName}</p>
-                    <p className="card-text">Major: {this.state.major}</p>
-                    <p className="card-text">Year: {this.state.yearAttend}</p>
-                </div>
-                <div className="card-footer">
-                </div>
-            </div>
+            <Card border="primary">
+                <Card.Header>My Information</Card.Header>
+                <Card.Body>
+                    <Card.Text>
+                        <p>Name: {this.state.firstName+" "+this.state.lastName}</p>
+                        <p>Major: {this.state.major}</p>
+                        <p>Year: {this.state.yearAttend}</p>                        
+                    </Card.Text>
+                </Card.Body>
+            </Card>
         );
     }
 }

@@ -26,7 +26,6 @@ function App() {
           <Route path='/help' component={Help} />
           <Route path='/signout' component={Signout} />
         </Switch>
-
       </div>
     </Router>
 

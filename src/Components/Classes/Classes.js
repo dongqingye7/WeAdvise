@@ -1,5 +1,6 @@
 import React from 'react';
 import DegreePlan from './DegreePlan';
+import CourseChecklist from './CourseChecklist';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 
@@ -10,9 +11,8 @@ function Classes() {
         <Tab eventKey="degreePlan" title="Degree Plan">
           <DegreePlan />
         </Tab>
-        <Tab eventKey="courseTaken" title="Course Taken">
-        </Tab>
-        <Tab eventKey="courseNotTaken" title="Course Not Taken">
+        <Tab eventKey="courseTaken" title="Courses Checklist">
+          <CourseChecklist />
         </Tab>
       </Tabs>
       

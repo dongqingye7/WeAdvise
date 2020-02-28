@@ -1,4 +1,6 @@
 import React from 'react';
+import withAuthorization from "../withAuthorization";
+
 
 function Schedule() {
   return (
@@ -8,4 +10,7 @@ function Schedule() {
   );
 }
 
-export default Schedule;
+const authCondition = authUser => !!authUser;
+
+
+export default withAuthorization(authCondition)(Schedule);

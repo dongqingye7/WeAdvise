@@ -5,15 +5,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CalendarComponent from './CalendarComponent';
 import UserInfo from './UserInfo';
-<<<<<<< HEAD
-import Card from 'react-bootstrap/Card';
 import withAuthorization from "../withAuthorization";
-
-
-
-=======
 import AdvisorInfo from './AdvisorInfo';
->>>>>>> 55a6ffe1cd8951dace6249aac8b62e5b426069b8
+
+
+
 
 function Home() {
 

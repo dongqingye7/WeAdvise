@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
-import logo from "./logo.svg";
 
 import { withRouter } from "react-router-dom";
 
 import { SignUpLink } from "./SignUp";
 import { PasswordForgetLink } from "./PasswordForget";
-import { auth, db } from "../firebase";
+import { auth} from "../firebase";
 import * as routes from "../constants/routes";
 
 const SignInPage = ({ history }) => {

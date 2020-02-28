@@ -13,12 +13,7 @@ class HomePage extends Component {
   };
 
   componentDidMount() {
-    // db.onceGetUsers().then(res => {
-    //   this.setState({
-    //     users: res.val()
-    //   });
-    // });
-
+    
     const { loggedUser } = this.props;
     db.doGetAnUnser(loggedUser.uid).then(res => {
       this.setState({
@@ -31,8 +26,7 @@ class HomePage extends Component {
   }
 
   render() {
-    const { users, username,role, year, loading } = this.state;
-    // console.log("dasdf", this.props.loggedUser);
+    const { username,role, year, loading } = this.state;
     return (
       <div>
         <h1>Home</h1>

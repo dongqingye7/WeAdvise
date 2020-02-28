@@ -1,46 +1,5 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import { Container } from "reactstrap";
-import "./App.css";
-
 import * as routes from "../constants/routes";
-
-//nav stuff
-import Navigation from "./Navigation";
-import LandingPage from "./Landing";
-import SignUpPage from "./SignUp";
-import SignInPage from "./SignIn";
-import PasswordForgetPage from "./PasswordForget";
-import HomePage from "./Home/Home";
-import AccountPage from "./Account";
-import AboutMePage from "./AboutMe/AboutMe";
-
-
-
 import withAuthentication from "./withAuthentication";
-
-const App = () => (
-  <BrowserRouter>
-    <Container>
-      <Navigation />
-
-      <Route exact path={routes.SIGN_UP} component={SignUpPage} />
-      <Route exact path={routes.SIGN_IN} component={SignInPage} />
-      <Route
-        exact
-        path={routes.PASSWORD_FORGET}
-        component={PasswordForgetPage}
-      />
-      <Route exact path={routes.HOME} component={HomePage} />
-      <Route exact path={routes.ABOUTME} component={AboutMePage} />
-
-      <Route exact path={routes.ACCOUNT} component={AccountPage} />
-    </Container>
-  </BrowserRouter>
-);
-
-
-export default withAuthentication(App); //using HoC to handle session
 import React from 'react';
 import {Header} from './Layouts';
 import Home from './Home/Home';
@@ -48,7 +7,11 @@ import AboutMe from './AboutMe/AboutMe';
 import Schedule from './Schedule/Schedule';
 import Classes from './Classes/Classes';
 import Help from './Help/Help';
-import Signout from './Signout/Signout';
+// import Signout from './SignOut';
+import SignUpPage from "./SignUp";
+import SignInPage from "./SignIn";
+import PasswordForgetPage from "./PasswordForget";
+import AccountPage from "./Account";
 
 import {
   BrowserRouter as Router,
@@ -62,17 +25,27 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
-          <Route path='/' exact component={Home} />
+          <Route path='/Home' exact component={Home} />
           <Route path='/aboutme' component={AboutMe} />
           <Route path='/schedule' component={Schedule} />
           <Route path='/classes' component={Classes} />
+          {/* <Route path='/signout' component={Signout} /> */}
+
           <Route path='/help' component={Help} />
-          <Route path='/signout' component={Signout} />
         </Switch>
+        <Route
+        exact
+        path={routes.PASSWORD_FORGET}
+        component={PasswordForgetPage}
+      />
+      <Route exact path={routes.SIGN_UP} component={SignUpPage} />
+      <Route exact path={routes.ACCOUNT} component={AccountPage} />
+
+      <Route exact path={routes.SIGN_IN} component={SignInPage} />
       </div>
     </Router>
 
   );
 }
 
-export default App;
+export default withAuthentication(App); //using HoC to handle session

@@ -3,6 +3,8 @@ import DegreePlan from './DegreePlan';
 import CourseChecklist from './CourseChecklist';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
+import withAuthorization from "../withAuthorization";
+
 
 function Classes() {
   return (
@@ -20,4 +22,7 @@ function Classes() {
   );
 }
 
-export default Classes;
+const authCondition = authUser => !!authUser;
+
+
+export default withAuthorization(authCondition)(Classes);

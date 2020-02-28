@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Container } from "reactstrap";
@@ -42,7 +41,6 @@ const App = () => (
 
 
 export default withAuthentication(App); //using HoC to handle session
-=======
 import React from 'react';
 import {Header} from './Layouts';
 import Home from './Home/Home';
@@ -78,4 +76,3 @@ function App() {
 }
 
 export default App;
->>>>>>> 55a6ffe1cd8951dace6249aac8b62e5b426069b8

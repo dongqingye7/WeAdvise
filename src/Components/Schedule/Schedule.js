@@ -1,9 +1,13 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container'
+import ScheduleForm from './ScheduleForm.js';
 
 function Schedule() {
   return (
     <div className="Schedule">
-      <h1>Schedule Page</h1>
+      <Container>
+        <ScheduleForm />
+      </Container>
     </div>
   );
 }

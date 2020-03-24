@@ -1,1 +1,1 @@
-export const ADMIN = 'ADMIN';
+export const ADVISOR = 'ADVISOR';

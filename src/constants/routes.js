@@ -6,4 +6,9 @@ export const ACCOUNT = "/account";
 export const PASSWORD_FORGET = "/pw-forget";
 export const STUDENT_PAGE = "/spage";
 export const ABOUTME ="/AboutMe"
+export const QUEUE ="/q"
+export const A_LOGIN ="/advisor-login"
+export const A_HOME ="/advisor-home"
+export const A_ABOUT ="/advisor-about"
+
 

@@ -20,9 +20,9 @@ const App = () => (
 
       <hr />
 
-      <Route exact path={ROUTES.LANDING} component={LandingPage} />
+      <Route exact path={ROUTES.SIGN_IN} component={SIGN_IN} />
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+      {/* <Route path={ROUTES.SIGN_IN} component={SignInPage} /> */}
       <Route
         path={ROUTES.PASSWORD_FORGET}
         component={PasswordForgetPage}

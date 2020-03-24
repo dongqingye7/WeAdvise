@@ -1,50 +1,61 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
-import Grid from '@material-ui/core/Grid';
 
-import { auth } from "../firebase";
-import * as routes from "../constants/routes";
+import { withRouter } from "react-router-dom";
 
-//it resets your password. It doesn’t matter if you are authenticated or not
-const PasswordForgetPage = () => (
-  <Grid container>
-    <Grid item xs>
-      <h1 className="centered">Forget Password</h1>
-      <PasswordForgetForm />
-    </Grid>
-  </Grid>
-);
+import { auth} from "../../firebase";
+import * as routes from "../../constants/routes";
+
+const AdvisorLogin = ({ history }) => {
+  return (
+    <div className="div-flex">
+      <div>
+        <h1 className="centered">Sign In</h1>
+        {/* <img src={logo} className="App-logo" alt="My logo" /> */}
+
+        <SignInForm history={history} />
+      </div>
+    </div>
+  );
+};
 
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value
 });
 
-//################### PasswordForget Form ###################
 const INITIAL_STATE = {
   email: "",
+  password: "",
   error: null,
-  showingAlert: false
+  showingAlert: false,
+  role: "Advisor"
 };
 
-class PasswordForgetForm extends Component {
+class SignInForm extends Component {
   state = { ...INITIAL_STATE };
 
   onSubmit = event => {
-    const { email } = this.state;
+    const { email, password, role } = this.state;
+
+    const { history } = this.props;
 
     auth
-      .doPasswordReset(email)
+      .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
+        if(this.state.role=="Student"){
+          history.push(routes.A_HOME);
+          }
       })
       .catch(error => {
         this.setState(byPropKey("error", error));
-        this.timer(); //show alert message for some seconds
+        this.timer(); //defined below
       });
 
     event.preventDefault();
   };
+
+  
 
   timer = () => {
     this.setState({
@@ -59,9 +70,9 @@ class PasswordForgetForm extends Component {
   };
 
   render() {
-    const { email, error, showingAlert } = this.state;
+    const { email, password, error, role, showingAlert } = this.state;
 
-    const isInvalid = email === "";
+    const isInvalid = password === "" || email === "";
 
     return (
       <div>
@@ -85,41 +96,36 @@ class PasswordForgetForm extends Component {
               }
             />
           </FormGroup>
+          <FormGroup>
+            <Label for="examplePassword">Password</Label>
+            <Input
+              type="password"
+              name="password"
+              id="examplePassword"
+              placeholder="pass-test"
+              value={password}
+              onChange={event =>
+                this.setState(byPropKey("password", event.target.value))
+              }
+            />
+          </FormGroup>
 
           <div className="text-center">
             <Button disabled={isInvalid} type="submit">
-              Reset My Password
+              Sign In
             </Button>
           </div>
         </Form>
+
+        <hr />
+
       </div>
     );
   }
 }
 
-//################### PasswordForget Link ###################
-const PasswordForgetLink = () => (
-  <p>
-    <Link to={routes.PASSWORD_FORGET}>Forgot Password?</Link>
-  </p>
-);
+export default withRouter(AdvisorLogin);
 
-export default PasswordForgetPage;
+export { SignInForm };
 
-export { PasswordForgetForm, PasswordForgetLink };
 
-// <form onSubmit={this.onSubmit}>
-//   <input
-//     value={this.state.email}
-//     onChange={event =>
-//       this.setState(byPropKey("email", event.target.value))
-//     }
-//     type="text"
-//     placeholder="Email Address"
-//   />
-//   <button disabled={isInvalid} type="submit">
-//     Reset My Password
-//   </button>
-
-//   {error && <p>{error.message}</p>}
-// </form>

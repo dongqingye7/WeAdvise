@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
-
+import * as ROLES from '../constants/roles'
 import * as routes from "../constants/routes";
 import { auth, db } from "../firebase";
+import Grid from '@material-ui/core/Grid';
+
 
 const SignUpPage = ({ history }) => (
   <div>
@@ -24,7 +26,8 @@ const INITIAL_STATE = {
   passwordTwo: "",
   error: null,
   showingAlert: false,
-  role: "Student"
+  role: "Student",
+  isAdvisor: false
 };
 
 //A Higher order function with prop name as key and the value to be assigned to
@@ -41,17 +44,22 @@ class SignUpForm extends Component {
   
 
   onSubmit = event => {
-    const { username, email, passwordOne} = this.state;
+    const { username, email, passwordOne, isAdvisor } = this.state;
     const { history } = this.props;
+    const roles = {};
+    if(isAdvisor){
+      roles[ROLES.ADVISOR]= ROLES.ADVISOR;
+    }
     auth
       .doCreateUserWithEmailAndPassword(email, passwordOne)
-      //it the above functions resolves, reset the state to its initial state values, otherwise, set the error object
+      //it the above f unctions resolves, reset the state to its initial state values, otherwise, set the error object
       .then(authUser => {
         //creating a user in the database after the sign up through Firebase auth API
         db.doCreateUser(authUser.user.uid, username, email, "Student")
           .then(() => {
             this.setState({
-              ...INITIAL_STATE
+              ...INITIAL_STATE,
+              roles
             });
             history.push(routes.SIGN_IN); //redirects to Home Page
           })
@@ -87,7 +95,9 @@ class SignUpForm extends Component {
       passwordOne,
       passwordTwo,
       error,
+      role,
       showingAlert,
+      roles
       
     } = this.state;
     //a boolen to perform validation
@@ -170,9 +180,9 @@ class SignUpForm extends Component {
 //################### Sign Up Link ###################
 //used in the sign in when the user don't have an account registered yet
 const SignUpLink = () => (
-  <p>
-    Don't have an account? <Link to={routes.SIGN_UP}>Sign Up</Link>
-  </p>
+  <Grid item>
+  Don't have an account? <Link to={routes.SIGN_UP}>Sign Up</Link>
+  </Grid>
 );
 
 //exports

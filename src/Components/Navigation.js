@@ -35,7 +35,6 @@ export default Navigation;
 const NavigationAuth = ({ userInfo }) => (
   <Navbar color="light" light expand="md">
     <NavbarBrand>
-      <Link to={routes.LANDING}> Landing </Link>
     </NavbarBrand>
     <Nav className="ml-auto" navbar>
       <NavItem>

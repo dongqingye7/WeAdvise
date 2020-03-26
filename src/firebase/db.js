@@ -10,7 +10,12 @@ export const doCreateUser = (id, username, email, role) =>
     email,
     role
   });
-
+  export const makeQueue = (id, username, email, role) =>
+  db.ref(`users/${id}`).set({
+    username,
+    email,
+    role
+  });
 //returns all users from firebase realtime db
 export const onceGetUsers = () => db.ref("users").once("value");
 

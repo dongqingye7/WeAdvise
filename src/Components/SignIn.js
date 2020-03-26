@@ -115,12 +115,10 @@ class SignInForm extends Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        if(this.state.role=="Student"){
+      
         history.push(routes.HOME);
-        }
-        else{
-          console.log("YOU ARE NOT STUDENT");
-        }
+        
+        
       })
       .catch(error => {
         this.setState(byPropKey("error", error));

@@ -80,6 +80,9 @@ const SignUpPage = ({ history }) => {
 //################### Sign Up Form ###################
 const INITIAL_STATE = {
   Firstname: "",
+  Lastname:"",
+  Major:"",
+  Year_Started:"",
   email: "",
   passwordOne: "",
   passwordTwo: "",
@@ -106,7 +109,7 @@ class SignUpForm extends Component {
 
   onSubmit = event => {
 
-    const { Firstname, email, passwordOne } = this.state;
+    const { Firstname, Lastname,Major,Year_Started, email, passwordOne } = this.state;
     const { history } = this.props;
     const roles = {};
     
@@ -115,7 +118,7 @@ class SignUpForm extends Component {
       //it the above f unctions resolves, reset the state to its initial state values, otherwise, set the error object
       .then(authUser => {
         //creating a user in the database after the sign up through Firebase auth API
-        db.doCreateUser(authUser.user.uid, Firstname, email, "Student")
+        db.doCreateUser(authUser.user.uid, Firstname,Lastname, Major, Year_Started, email, "Student")
           .then(() => {
             this.setState({
               ...INITIAL_STATE,
@@ -151,6 +154,9 @@ class SignUpForm extends Component {
   render() {
     const {
       Firstname,
+      Lastname,
+      Major,
+      Year_Started,
       email,
       passwordOne,
       passwordTwo,
@@ -162,8 +168,11 @@ class SignUpForm extends Component {
       passwordOne !== passwordTwo ||
       passwordOne === "" ||
       email === "" ||
+      Lastname === ""||
+      Major == ""||
+      Year_Started == ""||
       Firstname === "";
-
+      
 
     return (
             
@@ -178,14 +187,13 @@ class SignUpForm extends Component {
         <Grid item xs={12} sm={6}>
           
             <TextField
-              autoComplete="fname"
               variant="outlined"
               required
               fullWidth
-              name="firstname"
               id="First Name"
-              Label="First Name"
-              autoFocus
+              label = "First Name"
+              name="firstname"
+              autoComplete="fname"
               value={Firstname}
               onChange={e =>
                 this.setState(byPropKey("Firstname", e.target.value))
@@ -202,6 +210,10 @@ class SignUpForm extends Component {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                value={Lastname}
+              onChange={e =>
+                this.setState(byPropKey("Lastname", e.target.value))
+              }
               />
             </Grid>  
 
@@ -214,6 +226,10 @@ class SignUpForm extends Component {
                 label="Major(CS,SE,CSE)"
                 name="Major"
                 autoComplete="Major"
+                value={Major}
+                onChange={e =>
+                  this.setState(byPropKey("Major", e.target.value))
+                }
               />
             </Grid>    
 
@@ -226,6 +242,10 @@ class SignUpForm extends Component {
                 label="Year Started"
                 name="yearStarted"
                 autoComplete="yearStarted"
+                value={Year_Started}
+                onChange={e =>
+                  this.setState(byPropKey("Year_Started", e.target.value))
+                }
               />
             </Grid>  
 
@@ -238,7 +258,7 @@ class SignUpForm extends Component {
               label="School Email Address"
               name="email"
               autoComplete="email"
-              placeholder="user@gmail.com"
+              placeholder="user@mavs.uta.edu"
               value={email}
               onChange={e => this.setState(byPropKey("email", e.target.value))}
             />
@@ -277,15 +297,17 @@ class SignUpForm extends Component {
             />
           </Grid>
 
+          <div/>
           <Typography component="h1" variant="h5">
-
             <Button disabled={isInvalid} type="submit"
             fullWidth
+            padding = "30px"
             variant="contained"
             color="primary">
               Sign Up
             </Button>
-          </Typography>       
+            
+          </Typography> 
           </Grid>
         </form>
 
@@ -300,11 +322,13 @@ class SignUpForm extends Component {
 //################### Sign Up Link ###################
 //used in the sign in when the user don't have an account registered yet
 const SignUpLink = () => (
-  <Grid container justify="flex-end">
+  
   <Grid item>
-  Don't have an account? <Link to={routes.SIGN_UP}>Sign Up</Link>
+  {/* Don't have an account? <Link to={routes.SIGN_UP}>Sign Up</Link> */}
+  Don't have an account? <Link href = "/signup">Sign Up</Link>
+
   </Grid>
-  </Grid>
+  
 );
 
 //exports

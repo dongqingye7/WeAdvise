@@ -1,18 +1,28 @@
 import React from "react";
+import * as routes from "../constants/routes";
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+
 
 const LandingPage = () => (
   <div>
     <h1>Landing Page</h1>
+    <Button type="submit"
+            
+            variant="contained"
+            href = "/advisor-login"
+            >
+            Advisor          
+            </Button>
 
-    <p>This page is public, accessible by everyone</p>
-
-    <p>
-      Est cillum sunt qui nulla esse mollit quis magna enim non non laborum
-      culpa nisi. Amet do nisi minim amet dolor quis veniam fugiat exercitation
-      duis anim occaecat. Mollit pariatur minim aute eiusmod est ad dolore
-      labore fugiat deserunt quis. Aliquip dolor ex irure sunt voluptate
-      exercitation voluptate incididunt.
-    </p>
+    <Button type="submit"
+            href = "/signin"
+            variant="contained"
+            >
+            Student     
+    </Button>
+    
+     
   </div>
 );
 

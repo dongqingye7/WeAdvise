@@ -7,6 +7,10 @@ class HomePage extends Component {
   state = {
     users: null,
     username: "",
+    Firstname:"",
+    Lastname:"",
+    Major:"",
+    Year_Started:"",
     role:"",
     year: "",
     loading: true
@@ -22,6 +26,10 @@ class HomePage extends Component {
     const { loggedUser } = this.props;
     db.doGetAnUnser(loggedUser.uid).then(res => {
       this.setState({
+        Firstname: res.val().Firstname,
+        Lastname: res.val().Lastname,
+        Major: res.val().Major,
+        Year_Started: res.val().Year_Started,
         username: res.val().username,
         role: res.val().email,
         year: res.val().year,
@@ -36,6 +44,9 @@ class HomePage extends Component {
     return (
       <div>
         <h1>Home</h1>
+        {!loading && <p className="centered">Hello {Firstname}!</p>}
+        {!loading && <p className="centered">Hello {Lastname}!</p>}
+        {!loading && <p className="centered">Hello {role}!</p>}
         {!loading && <p className="centered">Hello {username}!</p>}
         {!loading && <p className="centered">Hello {role}!</p>}
         {!loading && <p className="centered">Hello {year}!</p>}

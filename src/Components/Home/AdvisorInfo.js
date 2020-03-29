@@ -11,11 +11,16 @@ class AdvisorInfo extends Component {
         }
     }
     render() { 
-        var advisor1 = {AdvisorID: 0, firstName: "Bob", lastName: "Smith", office: "ERB 001"};
-        var advisor2 = {AdvisorID: 1, firstName: "Mary", lastName: "Lisa", office: "ERB 002"};
+        var advisor1 = {AdvisorID: 0, firstName: "Linda", lastName: "Barasch", office: "ERB 643"};
+        var advisor2 = {AdvisorID: 1, firstName: "Christopher", lastName: "Conly", office: "ERB 642"};
+        var advisor3 = {AdvisorID: 1, firstName: "Katy", lastName: "Pedone", office: "ERB 645"};
+        var advisor4 = {AdvisorID: 1, firstName: "Melissa", lastName: "Rose", office: "ERB 644"};
 
         this.state.advisors.push(advisor1);
         this.state.advisors.push(advisor2);
+        this.state.advisors.push(advisor3);
+        this.state.advisors.push(advisor4);
+
         let advisorlist=this.state.advisors.map((advisor, i)=> {
             return (
                 <div>

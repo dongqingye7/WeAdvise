@@ -95,7 +95,7 @@ class Queue extends Component {
     const { history } = this.props;
          
         //creating a user in the database after the sign up through Firebase auth API
-        db.makeQueue(username, message,)
+        db.makeQueue(username, message)
           .then(() => {
             this.setState({
               ...INITIAL_STATE,

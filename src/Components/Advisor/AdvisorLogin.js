@@ -1,21 +1,82 @@
 import React, { Component } from "react";
-import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
 
 import { withRouter } from "react-router-dom";
 
 import { auth} from "../../firebase";
 import * as routes from "../../constants/routes";
+import { Form, FormGroup, Label, Input, Alert } from "reactstrap";
+
+
+import { PasswordForgetLink } from "../PasswordForget";
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+
+     
+  );
+}
+
+const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
 const AdvisorLogin = ({ history }) => {
-  return (
-    <div className="div-flex">
-      <div>
-        <h1 className="centered">Sign In</h1>
-        {/* <img src={logo} className="App-logo" alt="My logo" /> */}
+  const classes = useStyles();
 
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}> </Avatar>
+        <Typography component="h1" variant="h5">
+          Adviser SignIn
+        </Typography>
+        <form className={classes.form} noValidate>
         <SignInForm history={history} />
-      </div>
-    </div>
+        <PasswordForgetLink />
+
+        </form>
+        </div>
+      <Box mt={8}>
+        <Copyright />
+      </Box>
+    </Container>
   );
 };
 
@@ -25,7 +86,7 @@ const byPropKey = (propertyName, value) => () => ({
 
 const INITIAL_STATE = {
   email: "",
-  password: "",
+  password1: "",
   error: null,
   showingAlert: false,
   role: "Advisor"
@@ -35,12 +96,12 @@ class SignInForm extends Component {
   state = { ...INITIAL_STATE };
 
   onSubmit = event => {
-    const { email, password, role } = this.state;
+    const { email1, password1, role } = this.state;
 
     const { history } = this.props;
 
     auth
-      .doSignInWithEmailAndPassword(email, password)
+      .doSignInWithEmailAndPassword(email1, password1)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
           history.push(routes.A_HOME);
@@ -69,9 +130,9 @@ class SignInForm extends Component {
   };
 
   render() {
-    const { email, password, error, role, showingAlert } = this.state;
+    const { email1, password1, error, role, showingAlert } = this.state;
 
-    const isInvalid = password === "" || email === "";
+    const isInvalid = password1 === "" || email1 === "";
 
     return (
       <div>
@@ -81,15 +142,21 @@ class SignInForm extends Component {
           </Alert>
         )}
 
-        <Form onSubmit={this.onSubmit}>
+<Form onSubmit={this.onSubmit}>
           <FormGroup>
             <Label for="exampleEmail">Email</Label>
-            <Input
-              type="email"
-              name="email"
-              id="exampleEmail"
+            <TextField
+             variant="outlined"
+             margin="normal"
+             required
+             fullWidth
+             id="email"
+             label="Email Address"
+             name="email"
+             autoComplete="email"
+             autoFocus
               placeholder="user@gmail.com"
-              value={email}
+              value={email1}
               onChange={event =>
                 this.setState(byPropKey("email", event.target.value))
               }
@@ -97,12 +164,15 @@ class SignInForm extends Component {
           </FormGroup>
           <FormGroup>
             <Label for="examplePassword">Password</Label>
-            <Input
-              type="password"
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
               name="password"
-              id="examplePassword"
-              placeholder="pass-test"
-              value={password}
+              label="Password"
+              type="password"
+              value={password1}
               onChange={event =>
                 this.setState(byPropKey("password", event.target.value))
               }
@@ -110,8 +180,13 @@ class SignInForm extends Component {
           </FormGroup>
 
           <div className="text-center">
-            <Button disabled={isInvalid} type="submit">
-              Sign In
+            <Button disabled={isInvalid} type="submit"
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            >
+              Adviser SignIn
             </Button>
           </div>
         </Form>

@@ -72,8 +72,9 @@ const SignInPage = ({ history }) => {
         </Typography>
         <form className={classes.form} noValidate>
         <SignInForm history={history} />
-        <SignUpLink />
         <PasswordForgetLink />
+        <SignUpLink />
+
         </form>
         </div>
       <Box mt={8}>
@@ -96,13 +97,6 @@ const INITIAL_STATE = {
 };
 
 
-// var ref = firebase.database().ref("users/");
-// ref.once("value")
-//   .then(function(snapshot) {
-//     var key = snapshot.key; // "ada"
-//    // var childKey = snapshot.child("name/last").key; // "last"
-//   });
-
 class SignInForm extends Component {
   state = { ...INITIAL_STATE };
 
@@ -112,7 +106,7 @@ class SignInForm extends Component {
     const { history } = this.props;
 
     auth
-      .doSignInWithEmailAndPassword(email, password)
+      .doSignInWithEmailAndPassword(email, password,role)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
       
@@ -145,7 +139,7 @@ class SignInForm extends Component {
   render() {
     const { email, password, error, role, showingAlert } = this.state;
 
-    const isInvalid = password === "" || email === "";
+    const isInvalid = password === "" || email === ""|| role =="Advisor";
 
     return (
       <div>

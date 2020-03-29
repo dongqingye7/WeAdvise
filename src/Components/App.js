@@ -15,6 +15,9 @@ import AccountPage from "./Account";
 import AdvisorAbout from "./Advisor/AdvisorAbout";
 import AdvisorHome from "./Advisor/AdvisorHome";
 import AdvisorLogin from "./Advisor/AdvisorLogin";
+import LandingPage from "./Landing";
+import RegisterPage from "./Advisor/AdvisorRegister";
+
 
 
 import {
@@ -44,10 +47,10 @@ function App() {
       />
       <Route exact path={routes.SIGN_UP} component={SignUpPage} />
       <Route exact path={routes.ACCOUNT} component={AccountPage} />
-
+      <Route exact path={routes.LANDING} component={LandingPage}/>
       <Route exact path={routes.SIGN_IN} component={SignInPage} />
       <Route exact path={routes.QUEUE} component={Queue} />
-      <Route exact path={routes.A_LOGIN} component={AdvisorLogin} />
+       <Route exact path={routes.A_LOGIN} component={AdvisorLogin} />
       <Route exact path={routes.A_HOME} component={AdvisorHome} />
       <Route exact path={routes.A_ABOUT} component={AdvisorAbout} />
 

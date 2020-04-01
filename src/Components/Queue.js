@@ -61,18 +61,14 @@
 
 
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
-import * as ROLES from '../constants/roles'
-import * as routes from "../constants/routes";
-import { auth, db } from "../firebase";
-import Grid from '@material-ui/core/Grid';
-
-
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import {auth, db } from "../firebase";
+import withAuthorization from "./withAuthorization";
+import Signup from "./SignUp";
 
 //################### Sign Up Form ###################
 const INITIAL_STATE = {
-  username: "",
+  name: "",
   message: "",
  
 };
@@ -91,11 +87,9 @@ class Queue extends Component {
   
 
   onSubmit = event => {
-    const { username, message } = this.state;
-    const { history } = this.props;
-         
+    const { name, message } = this.state;
         //creating a user in the database after the sign up through Firebase auth API
-        db.makeQueue(username, message)
+        db.makeQueue( name, message)
           .then(() => {
             this.setState({
               ...INITIAL_STATE,
@@ -106,7 +100,7 @@ class Queue extends Component {
             this.setState(byPropKey("error", error));
             this.timer(); //show alert message for some seconds
           });
-      
+        
      
 
     event.preventDefault(); //prevents refreshing
@@ -116,7 +110,7 @@ class Queue extends Component {
 
   render() {
     const {
-      username,
+      name,
       message      
     } = this.state;
     //a boolen to perform validation
@@ -128,13 +122,13 @@ class Queue extends Component {
           <FormGroup>
             <Label for="userName">Full Name</Label>
             <Input
-              type="username"
-              name="username"
-              id="userName"
+              type="name"
+              name="name"
+              id="Name"
               placeholder="Name"
-              value={username}
+              value={name}
               onChange={e =>
-                this.setState(byPropKey("username", e.target.value))
+                this.setState(byPropKey("name", e.target.value))
               }
             />
           </FormGroup>
@@ -142,10 +136,11 @@ class Queue extends Component {
             <Label for="exampleEmail">Message</Label>
             <Input
               type="text"
-              name="email"
-              id="exampleEmail"
+              name="message"
+              id="message"
               value={message}
-              onChange={e => this.setState(byPropKey("message", e.target.value))}
+              onChange={e => 
+                this.setState(byPropKey("message", e.target.value))}
             />
           </FormGroup>
           <div className="text-center">
@@ -161,5 +156,6 @@ class Queue extends Component {
 
 
 
-//exports
-export default (Queue); //using a HoC to get access to history
+const authCondition = authUser => !!authUser;
+
+export default withAuthorization(authCondition)(Queue); //using a HoC to get access to history

@@ -14,10 +14,9 @@ export const doCreateUser = (id, Firstname,Lastname, Major, Year_Started, email,
     role
   });
 
-  export const makeQueue = (name, message) =>
+  export const makeQueue = ( fname, lname, Student_id,Advisor) =>
   db.ref(`Queue/`).push({
-    name,
-    message
+    fname, lname, Student_id,Advisor
   });
 //returns all users from firebase realtime db
 export const onceGetUsers = () => db.ref("users").once("value");

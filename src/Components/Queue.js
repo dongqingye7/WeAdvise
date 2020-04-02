@@ -64,13 +64,10 @@ import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import {auth, db } from "../firebase";
 import withAuthorization from "./withAuthorization";
-<<<<<<< HEAD
 import Signup from "./SignUp/SignUp";
-=======
-import Signup from "./SignUp";
+
 import Col from 'react-bootstrap/Col';
 
->>>>>>> 7f3febb25497e6d043a283eaba0d493d14e38165
 
 //################### Sign Up Form ###################
 const INITIAL_STATE = {

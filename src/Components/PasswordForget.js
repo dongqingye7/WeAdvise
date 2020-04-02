@@ -1,20 +1,75 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
-import Grid from '@material-ui/core/Grid';
-
+import Grid from "@material-ui/core/Grid";
+import { Typography, Box, CssBaseline, makeStyles } from "@material-ui/core";
 import { auth } from "../firebase";
 import * as routes from "../constants/routes";
+import { NavbarBrand, Navbar, Container } from "reactstrap";
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="https://github.com/dongqingye7/WeAdvise">
+        We Advise
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
+
+const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  },
+
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main
+  },
+  form: {
+    width: "50%", // Fix IE 11 issue.
+    marginTop: theme.spacing(3)
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2)
+  }
+}));
 
 //it resets your password. It doesn’t matter if you are authenticated or not
-const PasswordForgetPage = () => (
-  <Grid container>
-    <Grid item xs>
-      <h1 className="centered">Forget Password</h1>
-      <PasswordForgetForm />
-    </Grid>
-  </Grid>
-);
+const PasswordForgetPage = () => {
+  const classes = useStyles();
+  return (
+    <>
+      <Navbar className="navbar-top navbar-horizontal" expand="md">
+        <Container className="px-4">
+          <NavbarBrand href="/" className="pt-3 text-blue text-lg">
+            We Advise
+          </NavbarBrand>
+        </Container>
+      </Navbar>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Typography component="h1" variant="h5">
+            Forget Password
+          </Typography>
+          <div className={classes.form}>
+            <PasswordForgetForm />
+          </div>
+        </div>
+        <Box mt={8}>
+          <Copyright />
+        </Box>
+      </Container>
+    </>
+  );
+};
 
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value
@@ -87,7 +142,13 @@ class PasswordForgetForm extends Component {
           </FormGroup>
 
           <div className="text-center">
-            <Button disabled={isInvalid} type="submit">
+            <Button
+              disabled={isInvalid}
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+            >
               Reset My Password
             </Button>
           </div>

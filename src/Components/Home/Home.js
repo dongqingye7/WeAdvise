@@ -14,8 +14,9 @@ import Header1 from "./AdvisorHeader";
 
 
 
-function Home() {
+class Home extends React.Component {
 
+  render() {
   return (
     // <div className="Home">
       
@@ -67,7 +68,7 @@ function Home() {
   </>
   );
 }
-
+}
 // export default withAuthorization(authCondition)(AccountPage);
 const authCondition = authUser => !!authUser;
 

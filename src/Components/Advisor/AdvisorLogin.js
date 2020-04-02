@@ -8,7 +8,6 @@ import { Form, FormGroup, Label, Input, Alert } from "reactstrap";
 
 
 import { PasswordForgetLink } from "../PasswordForget";
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -20,13 +19,17 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {
+  NavbarBrand,
+  Navbar,
+} from "reactstrap";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="https://github.com/dongqingye7/WeAdvise">
+        We Advise
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -60,12 +63,24 @@ const AdvisorLogin = ({ history }) => {
   const classes = useStyles();
 
   return (
+    <>
+    <div className="header">
+    <Navbar
+      className="navbar-top navbar-horizontal"
+      expand="md"
+    >
+      <Container className="px-4">
+        <NavbarBrand href="/" className="pt-3 text-blue text-lg">
+          We Advise
+        </NavbarBrand>
+      </Container>
+    </Navbar>
+    </div>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}> </Avatar>
         <Typography component="h1" variant="h5">
-          Adviser SignIn
+          Advisor Sign In
         </Typography>
         <form className={classes.form} noValidate>
         <SignInForm history={history} />
@@ -77,6 +92,7 @@ const AdvisorLogin = ({ history }) => {
         <Copyright />
       </Box>
     </Container>
+    </>
   );
 };
 
@@ -186,7 +202,7 @@ class SignInForm extends Component {
             variant="contained"
             color="primary"
             >
-              Adviser SignIn
+              Adviser Sign In
             </Button>
           </div>
         </Form>

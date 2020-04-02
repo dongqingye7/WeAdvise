@@ -65,11 +65,16 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import {auth, db } from "../firebase";
 import withAuthorization from "./withAuthorization";
 import Signup from "./SignUp";
+import Col from 'react-bootstrap/Col';
+
 
 //################### Sign Up Form ###################
 const INITIAL_STATE = {
   name: "",
   message: "",
+  St_id:"",
+  Advisor:"",
+
  
 };
 
@@ -87,9 +92,9 @@ class Queue extends Component {
   
 
   onSubmit = event => {
-    const { name, message } = this.state;
+    const { name, message, St_id, Advisor} = this.state;
         //creating a user in the database after the sign up through Firebase auth API
-        db.makeQueue( name, message)
+        db.makeQueue( name, message, St_id, Advisor)
           .then(() => {
             this.setState({
               ...INITIAL_STATE,
@@ -111,7 +116,9 @@ class Queue extends Component {
   render() {
     const {
       name,
-      message      
+      message,
+      St_id,
+      Advisor
     } = this.state;
     //a boolen to perform validation
     
@@ -143,6 +150,36 @@ class Queue extends Component {
                 this.setState(byPropKey("message", e.target.value))}
             />
           </FormGroup>
+          
+
+          <FormGroup>
+            <Label for="number">Student ID</Label>
+            <Input
+              type="number"
+              name="ID"
+              id="St_id"
+              value={St_id}
+              onChange={e => 
+                this.setState(byPropKey("St_id", e.target.value))}
+            />
+          </FormGroup>
+          <FormGroup>
+            
+            <Label for="number">Advisor</Label>
+            <select name="Advisor" id="Advisor" onChange={e => 
+                this.setState(byPropKey("Advisor", e.target.value))}>
+          <option value={Advisor}>
+            --Please choose an option--
+            </option>
+          <option value ="barasch" >Linda Barasch</option>
+                    <option value ="katy" >"Katy Pedone"</option>
+                    <option value ="chris" >Chris Conly</option>
+                    <option value ="rose" >Melissa Rose</option>
+          </select>
+
+          </FormGroup>
+          
+          
           <div className="text-center">
             <Button  type="submit">
               Submit

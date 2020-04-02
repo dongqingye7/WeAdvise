@@ -6,6 +6,8 @@ import { Card, Row, Col } from "reactstrap";
 import withAuthorization from "../withAuthorization";
 import { db } from "../../firebase";
 import AdvisorInfo from './AdvisorInfo.js';
+import Chart from "chart.js";
+
 import {
   chartOptions,
   parseOptions,
@@ -32,18 +34,18 @@ class Header1 extends React.Component {
       activeNav: 1,
       chartExample1Data: "data1"
     };
-    // if (window.Chart) {
-    //   parseOptions(Chart, chartOptions());
-    // }
+    if (window.Chart) {
+       parseOptions(Chart, chartOptions());
+     }
   }
-  // toggleNavs = (e, index) => {
-  //   e.preventDefault();
-  //   this.setState({
-  //     activeNav: index,
-  //     chartExample1Data:
-  //       this.state.chartExample1Data === "data1" ? "data2" : "data1"
-  //   });
-  // };
+   toggleNavs = (e, index) => {
+     e.preventDefault();
+     this.setState({
+       activeNav: index,
+       chartExample1Data:
+         this.state.chartExample1Data === "data1" ? "data2" : "data1"
+     });
+   };
 
   render() {
     const advisorCard=AdvisorInfo.map((advisor)=>{

@@ -7,7 +7,7 @@ import AboutMe from './AboutMe/AboutMe';
 import Schedule from './Schedule/Schedule';
 import Classes from './Classes/Classes';
 import Help from './Help/Help';
-import Queue from './Queue';
+import Queue from './Schedule/Queue';
 import SignUpPage from "./SignUp/SignUp";
 import SignInPage from "./SignIn/SignIn";
 import PasswordForgetPage from "./PasswordForget";
@@ -16,7 +16,7 @@ import AdvisorAbout from "./Advisor/AdvisorAbout";
 import AdvisorHome from "./Advisor/AdvisorHome";
 import AdvisorLogin from "./Advisor/AdvisorLogin";
 import LandingPage from "./LandingPage/Landing";
-import RegisterPage from "./Advisor/AdvisorRegister";
+import AppointmentInfo from "./Home/Appointmentinfo";
 
 
 
@@ -29,6 +29,7 @@ import {
 function App() {
   return (
     <Router>
+      
       <div className="App">
         {/* <Header /> */}
         <Switch>
@@ -53,6 +54,7 @@ function App() {
        <Route exact path={routes.A_LOGIN} component={AdvisorLogin} />
       <Route exact path={routes.A_HOME} component={AdvisorHome} />
       <Route exact path={routes.A_ABOUT} component={AdvisorAbout} />
+      <Route exact path={routes.A_INFO} component={AppointmentInfo} />
 
 
       </div>

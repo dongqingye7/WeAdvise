@@ -1,5 +1,7 @@
 //this is going to store Firebase realtime database API code
 import { db } from "./firebase";
+import Queue from "../Components/Queue";
+
 
 //##########3 user API
 
@@ -13,9 +15,9 @@ export const doCreateUser = (id, Firstname,Lastname, Major, Year_Started, email,
     email,
     role
   });
-
-  export const makeQueue = ( fname, lname, Student_id,Advisor) =>
-  db.ref(`Queue/`).push({
+  
+  export const makeQueue = ( id, fname, lname, Student_id,Advisor) =>
+  db.ref(`Queue/${id}`).set({
     fname, lname, Student_id,Advisor
   });
 //returns all users from firebase realtime db
@@ -24,3 +26,4 @@ export const onceGetUsers = () => db.ref("users").once("value");
 export const doGetAnUnser = uid => db.ref(`users/${uid}`).once("value");
 
 // other APIs could come below
+export const doGetAppointment = uid => db.ref(`Queue/${uid}`).once("value");

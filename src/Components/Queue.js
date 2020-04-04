@@ -65,6 +65,7 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import {auth, db } from "../firebase";
 import withAuthorization from "./withAuthorization";
 import Signup from "./SignUp/SignUp";
+import firebase from 'firebase/app';
 
 import Col from 'react-bootstrap/Col';
 
@@ -93,9 +94,11 @@ class Queue extends Component {
   
 
   onSubmit = event => {
-    const { name, message, St_id, Advisor} = this.state;
+    const {  name, message, St_id, Advisor} = this.state;
         //creating a user in the database after the sign up through Firebase auth API
-        db.makeQueue( name, message, St_id, Advisor)
+        
+        
+        db.makeQueue( firebase.auth().currentUser.uid, name, message, St_id, Advisor)
           .then(() => {
             this.setState({
               ...INITIAL_STATE,
@@ -106,7 +109,7 @@ class Queue extends Component {
             this.setState(byPropKey("error", error));
             this.timer(); //show alert message for some seconds
           });
-        
+     
      
 
     event.preventDefault(); //prevents refreshing

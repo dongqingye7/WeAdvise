@@ -16,7 +16,7 @@ import AdvisorAbout from "./Advisor/AdvisorAbout";
 import AdvisorHome from "./Advisor/AdvisorHome";
 import AdvisorLogin from "./Advisor/AdvisorLogin";
 import LandingPage from "./LandingPage/Landing";
-import RegisterPage from "./Advisor/AdvisorRegister";
+import AppointmentInfo from "./Home/Appointmentinfo";
 
 
 
@@ -53,6 +53,7 @@ function App() {
        <Route exact path={routes.A_LOGIN} component={AdvisorLogin} />
       <Route exact path={routes.A_HOME} component={AdvisorHome} />
       <Route exact path={routes.A_ABOUT} component={AdvisorAbout} />
+      <Route exact path={routes.A_INFO} component={AppointmentInfo} />
 
 
       </div>

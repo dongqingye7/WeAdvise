@@ -175,10 +175,10 @@ class Queue extends Component {
           <option value={Advisor}>
             --Please choose an option--
             </option>
-          <option value ="barasch" >Linda Barasch</option>
-                    <option value ="katy" >"Katy Pedone"</option>
-                    <option value ="chris" >Chris Conly</option>
-                    <option value ="rose" >Melissa Rose</option>
+          <option value ="Linda Barasch" >Linda Barasch</option>
+                    <option value ="Katy Pedone" >"Katy Pedone"</option>
+                    <option value ="Chris Conly" >Chris Conly</option>
+                    <option value ="Melissa Rose" >Melissa Rose</option>
           </select>
 
           </FormGroup>

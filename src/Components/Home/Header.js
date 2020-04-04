@@ -16,6 +16,7 @@ import React from "react";
 import { Card, CardBody, CardTitle, CardText, Container, Row, Col } from "reactstrap";
 import withAuthorization from "../withAuthorization";
 import { db } from "../../firebase";
+import AppointmentInfo from "./Appointmentinfo";
 
 
 const appiontment="Dr. Conly 1pm to 3pm";
@@ -23,6 +24,7 @@ const appiontmentLocation="ERB 642";
 const appiontmentTime="Tuesday, Feb 25, 2020"
 const queueNumber=12;
 const queueUser=5;
+
 
 
 class Header extends React.Component {
@@ -33,8 +35,11 @@ class Header extends React.Component {
     Lastname:"",
     Major:"",
     Year_Started:"",
-    role:"",
-    year: "",
+    name:"",
+    message:"",
+    Student_id:"",
+    Advisor:""
+    
   };
 
   componentDidMount() {
@@ -47,14 +52,25 @@ class Header extends React.Component {
         Lastname: res.val().Lastname,
         Major: res.val().Major,
         Year_Started: res.val().Year_Started,
-        role: res.val().role,
-        year: res.val().year,
+        
       });
     });
+
+
+    db.doGetAppointment(loggedUser.uid).then(res => {
+      this.setState({
+        name: res.val().name,
+        message: res.val().message,
+        Student_id: res.val().Student_id,
+        Advisor: res.val().Advisor
+        
+      });
+    });
+
   }
   render() {
     
-    const {Firstname, Lastname, Major, Year_Started,role, year } = this.state;
+    const {Firstname, Lastname, Major, Year_Started, name, message, Student_id, Advisor } = this.state;
     // console.log("dasdf", this.props.loggedUser);
     return (
       <>
@@ -104,8 +120,8 @@ class Header extends React.Component {
                         </CardTitle>
                         
                         <div className="h5 font-weight-bold mb-0">
-                            <p>{appiontment}
-                            <br />{appiontmentTime}
+                            <p>Adviser: {Advisor}
+                            <br />Studnet ID: {Student_id}
                             <br />Location: {appiontmentLocation} 
                             </p>
                         </div>

@@ -16,13 +16,13 @@ import React from "react";
 import { Card, CardBody, CardTitle, CardText, Container, Row, Col } from "reactstrap";
 import withAuthorization from "../withAuthorization";
 import { db } from "../../firebase";
-import AppointmentInfo from "./Appointmentinfo";
+//import numInQueue from 
 
 
-const appiontment="Dr. Conly 1pm to 3pm";
-const appiontmentLocation="ERB 642";
-const appiontmentTime="Tuesday, Feb 25, 2020"
-const queueNumber=12;
+
+
+
+const queueNumber=db.numInQueue;
 const queueUser=5;
 
 
@@ -69,8 +69,13 @@ class Header extends React.Component {
 
   }
   render() {
+    const appLocation="ERB 642";
+    
+
     
     const {Firstname, Lastname, Major, Year_Started, name, message, Student_id, Advisor } = this.state;
+   
+    
     // console.log("dasdf", this.props.loggedUser);
     return (
       <>
@@ -116,13 +121,15 @@ class Header extends React.Component {
                           tag="h3"
                           className="text-uppercase mb-2"
                         >
-                          My Appiontment
+                          My Appointment
                         </CardTitle>
                         
                         <div className="h5 font-weight-bold mb-0">
                             <p>Adviser: {Advisor}
                             <br />Studnet ID: {Student_id}
-                            <br />Location: {appiontmentLocation} 
+                            <br />Location: {appLocation}
+                            <br />Time: {message}
+
                             </p>
                         </div>
                       </div>

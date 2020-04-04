@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import SignOutButton from "../SignOut";
 import  NavItem from 'react-bootstrap/NavItem';
 
-function Header() {
+function Headerh() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
     <Navbar.Brand href="/Home">We Advise</Navbar.Brand>
@@ -13,7 +13,7 @@ function Header() {
             <Nav className="mr-auto">
                 <Nav.Link href="/Home">Home</Nav.Link>
                 <Nav.Link href="/classes">Classes</Nav.Link>
-                <Nav.Link href="/schedule">Schedule Appointment</Nav.Link>
+                <Nav.Link href="/q">Schedule Appointment</Nav.Link>
                 <Nav.Link href="/aboutme">About Me</Nav.Link>
                 
             </Nav>
@@ -28,4 +28,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Headerh;

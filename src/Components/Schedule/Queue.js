@@ -1,71 +1,10 @@
-// import React, { Component } from "react";
-
-// import { auth, db } from "../firebase";
-// import {firebase} from "../firebase/index"
-
-// const INITIAL_STATE = {
-//     username: "",
-//     email: "",
-    
-//   };
-
-//   const byPropKey = (propertyName, value) => () => ({
-//     [propertyName]: value
-//   });
-
-// class Queue extends Component {
-//     state = {
-//         ...INITIAL_STATE
-//       };
-
-//       onSubmit = event => {
-  
-//         auth
-//         .doCreateUserWithEmailAndPassword(email, passwordOne)
-//         //it the above f unctions resolves, reset the state to its initial state values, otherwise, set the error object
-//         .then(authUser => {
-//           //creating a user in the database after the sign up through Firebase auth API
-//           db.doCreateUser(authUser.user.uid, username, email)
-//             .then(() => {
-//               this.setState({
-//                 ...INITIAL_STATE,
-//                 roles
-//               });
-//               history.push(routes.SIGN_IN); //redirects to Home Page
-//             })
-//          })   }
-
-  
-//     render() {
-//         const {
-//             username,
-//             email,
-           
-            
-//           } = this.state;
-//       return (
-//         <form onSubmit={this.onAddMessage}>
-//           <input type="text" ref={node => this.input = node}/>
-//           <input type="submit"/>
-//           <ul>
-//             {this.state.messages.map(message =>
-//               <li key={message.id}>{message.text}</li>
-//             )}
-//           </ul>
-//         </form>
-//       );
-//     }
-//   }
-  
-//   export default Queue;
-
-
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import {auth, db } from "../firebase";
-import withAuthorization from "./withAuthorization";
-import Signup from "./SignUp/SignUp";
+import {auth, db } from "../../firebase";
+import withAuthorization from "../withAuthorization";
+import Signup from "../SignUp/SignUp";
 import firebase from 'firebase/app';
+import Headerh from "../Layouts/Header"
 
 import Col from 'react-bootstrap/Col';
 
@@ -73,7 +12,7 @@ import Col from 'react-bootstrap/Col';
 //################### Sign Up Form ###################
 const INITIAL_STATE = {
   name: "",
-  message: "",
+  Time: "",
   St_id:"",
   Advisor:"",
 
@@ -94,11 +33,11 @@ class Queue extends Component {
   
 
   onSubmit = event => {
-    const {  name, message, St_id, Advisor} = this.state;
+    const {  name, Time, St_id, Advisor} = this.state;
         //creating a user in the database after the sign up through Firebase auth API
         
         
-        db.makeQueue( firebase.auth().currentUser.uid, name, message, St_id, Advisor)
+        db.makeQueue( firebase.auth().currentUser.uid, name, Time, St_id, Advisor)
           .then(() => {
             this.setState({
               ...INITIAL_STATE,
@@ -120,7 +59,7 @@ class Queue extends Component {
   render() {
     const {
       name,
-      message,
+      Time,
       St_id,
       Advisor
     } = this.state;
@@ -129,6 +68,8 @@ class Queue extends Component {
 
     return (
       <div>
+            <Headerh/>
+
         <Form onSubmit={this.onSubmit}>
           <FormGroup>
             <Label for="userName">Full Name</Label>
@@ -143,16 +84,31 @@ class Queue extends Component {
               }
             />
           </FormGroup>
+
           <FormGroup>
-            <Label for="exampleEmail">Message</Label>
-            <Input
-              type="text"
-              name="message"
-              id="message"
-              value={message}
-              onChange={e => 
-                this.setState(byPropKey("message", e.target.value))}
-            />
+            <label for="input_starttime">Light version, 12hours</label>
+            <input placeholder="Selected time" type="text" id="input_starttime" class="form-control timepicker"/>
+          </FormGroup>
+
+
+          <FormGroup>
+            
+            <Label for="number">Time</Label>
+            <select name="Time" id="Time" onChange={e => 
+                this.setState(byPropKey("Time", e.target.value))}>
+          <option value={Time}>
+            --Please choose an option--
+            </option>
+          <option value ="9 am" >9 am</option>
+                    <option value ="10 am" >10 am</option>
+                    <option value ="11 am" >11 am</option>
+                    <option value ="12 pm" >12 pm</option>
+                    <option value ="1 pm" >1 pm</option>
+                    <option value ="2 pm" >2 pm</option>
+                    <option value ="3 pm" >3 pm</option>
+                    <option value ="4 pm" >4 pm</option>
+
+          </select>
           </FormGroup>
           
 

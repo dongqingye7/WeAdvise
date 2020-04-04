@@ -9,6 +9,7 @@ import AdvisorInfo from './AdvisorInfo';
 import Header from "./Header.js";
 import {Container,Card, CardHeader, CardContent} from '@material-ui/core';
 import Header1 from "./AdvisorHeader";
+import Headerh from "../Layouts/Header"
 
 
 
@@ -37,6 +38,7 @@ class Home extends React.Component {
     // </div>
 
     <>
+    <Headerh/>
     <Header />
     {/* Page content */}
     

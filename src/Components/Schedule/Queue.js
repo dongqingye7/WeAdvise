@@ -69,7 +69,7 @@ class Queue extends Component {
     return (
       <div>
             <Headerh/>
-
+        <div className="p-7 container">
         <Form onSubmit={this.onSubmit}>
           <FormGroup>
             <Label for="userName">Full Name</Label>
@@ -90,7 +90,7 @@ class Queue extends Component {
 
           <FormGroup>
             
-            <Label for="number">Time</Label>
+            <Label for="number">{"Time:"}</Label>
             <select name="Time" id="Time" onChange={e => 
                 this.setState(byPropKey("Time", e.target.value))}>
           <option value={Time}>
@@ -122,14 +122,14 @@ class Queue extends Component {
           </FormGroup>
           <FormGroup>
             
-            <Label for="number">Advisor</Label>
-            <select name="Advisor" id="Advisor" onChange={e => 
+            <Label for="number">{"Advisor: "}</Label>
+          <select name="Advisor" id="Advisor" onChange={e => 
                 this.setState(byPropKey("Advisor", e.target.value))}>
           <option value={Advisor}>
             --Please choose an option--
             </option>
           <option value ="Linda Barasch" >Linda Barasch</option>
-                    <option value ="Katy Pedone" >"Katy Pedone"</option>
+                    <option value ="Katy Pedone" >Katy Pedone</option>
                     <option value ="Chris Conly" >Chris Conly</option>
                     <option value ="Melissa Rose" >Melissa Rose</option>
           </select>
@@ -143,6 +143,7 @@ class Queue extends Component {
             </Button>
           </div>
         </Form>
+        </div>
       </div>
     );
   }

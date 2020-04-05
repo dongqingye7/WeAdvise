@@ -5,8 +5,9 @@ import SignOutButton from "../SignOut";
 import  NavItem from 'react-bootstrap/NavItem';
 
 function Headerh() {
+  
   return (
-    <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
+    <Navbar collapseOnSelect expand="lg" className="bg-gradient-info fixed-top font-weight-bold" variant="dark">
     <Navbar.Brand href="/Home">We Advise</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

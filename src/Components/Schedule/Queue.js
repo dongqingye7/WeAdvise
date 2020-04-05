@@ -85,10 +85,7 @@ class Queue extends Component {
             />
           </FormGroup>
 
-          <FormGroup>
-            <label for="input_starttime">Light version, 12hours</label>
-            <input placeholder="Selected time" type="text" id="input_starttime" class="form-control timepicker"/>
-          </FormGroup>
+        
 
 
           <FormGroup>

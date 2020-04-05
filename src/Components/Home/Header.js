@@ -11,19 +11,27 @@
 */
 import React from "react";
 
+import firebase from 'firebase/app';
 
 // reactstrap components
 import { Card, CardBody, CardTitle, CardText, Container, Row, Col } from "reactstrap";
 import withAuthorization from "../withAuthorization";
 import { db } from "../../firebase";
+import { keys } from "@material-ui/core/styles/createBreakpoints";
 //import numInQueue from 
 
 
 
 
+ const queueUser=5;
 
-const queueNumber=db.numInQueue;
-const queueUser=5;
+
+            // let dobobj = Object.values(dataSnapShot.val());
+            // for (var i = 0; i < dataSnapShot.numChildren(); i++) {
+            //   if (dobobj[i].uid == uid) {
+                
+            //   }
+            // }
 
 
 
@@ -35,17 +43,46 @@ class Header extends React.Component {
     Lastname:"",
     Major:"",
     Year_Started:"",
-    name:"",
+    name:" ",
     message:"",
     Student_id:"",
-    Advisor:""
+    Advisor:"",
+    NUMB:"",
+    POS:""
     
   };
 
   componentDidMount() {
-   
+    var user = firebase.auth().currentUser;
+    var uid = user.uid;
+    var self = this;
+    var doblist = firebase.database().ref("Queue");
+        doblist.once("value", dataSnapShot => {
+          let dobobj = Object.values(dataSnapShot.val());
+          let dobkey = Object.keys(dataSnapShot.val());
 
+          for (var i = dataSnapShot.numChildren() ; i >0 ; i--) {
+            
+            if(dobkey[i] == loggedUser.uid){
+            self.setState({
+              POS: i+1
+
+            })
+          }
+          }
+            this.setState({
+              NUMB: dataSnapShot.numChildren() ,
+
+            })
+
+            
+        });
+     
+   
+ 
     const { loggedUser } = this.props;
+
+   
     db.doGetAnUnser(loggedUser.uid).then(res => {
       this.setState({
         Firstname: res.val().Firstname,
@@ -57,7 +94,14 @@ class Header extends React.Component {
     });
 
 
-    db.doGetAppointment(loggedUser.uid).then(res => {
+
+// var doblist = firebase.database().ref("Queue");
+// doblist.once("value", dataSnapShot => {
+//   for (var i=0; i<dataSnapShot.numChildren(); i++){
+//   if(Object.values(dataSnapShot.val()) == uid){
+    
+db.doGetAppointment(loggedUser.uid).then(res => {
+  if(res.hasChild(uid)){
       this.setState({
         name: res.val().name,
         message: res.val().message,
@@ -65,7 +109,12 @@ class Header extends React.Component {
         Advisor: res.val().Advisor
         
       });
+    }
     });
+  
+//   }}
+// });
+    
 
   }
   render() {
@@ -73,7 +122,7 @@ class Header extends React.Component {
     
 
     
-    const {Firstname, Lastname, Major, Year_Started, name, message, Student_id, Advisor } = this.state;
+    const {Firstname, Lastname, Major, Year_Started, name, message, Student_id, Advisor, NUMB,POS } = this.state;
    
     
     // console.log("dasdf", this.props.loggedUser);
@@ -125,10 +174,10 @@ class Header extends React.Component {
                         </CardTitle>
                         
                         <div className="h5 font-weight-bold mb-0">
-                            <p>Adviser: {Advisor}
+                            <p>Adviser: {Advisor} (at {message} )
                             <br />Studnet ID: {Student_id}
                             <br />Location: {appLocation}
-                            <br />Time: {message}
+                            {/* <br />Time: {message} */}
 
                             </p>
                         </div>
@@ -154,9 +203,9 @@ class Header extends React.Component {
                           Current Queue
                       </CardTitle>
                       <div className="h5 font-weight-bold mb-0">
-                            <p>There are {queueNumber} people waiting.
+                            <p>There are {NUMB} people waiting.
                             <br />
-                            <br />You are at {queueUser}.
+                            <br />You are at - {POS} position in the queue.
                             <br />
                             </p>
                           </div>

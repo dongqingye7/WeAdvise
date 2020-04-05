@@ -5,17 +5,20 @@ import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import withAuthorization from "../withAuthorization";
 import Headerh from "../Layouts/Header"
-import Row from 'react-bootstrap/Row'
+import Row from 'react-bootstrap/Row';
 
 function Classes() {
-  return (
 
-    <div className="Classes">
-          <Headerh/>
+
+  return (
+    <>
+    <Headerh/>
+    <div className="Classes pt-7">
+          
       <Tabs defaultActiveKey="degreePlan" id="classTab">
         <Tab eventKey="degreePlan" title="Degree Plan">
           <div className="bg-white">
-          <Row className="m-3">
+          <Row className="pt-3 pb-6">
             <DegreePlan />
           </Row>
           </div>
@@ -26,6 +29,7 @@ function Classes() {
       </Tabs>
       
     </div>
+  </>
   );
 }
 

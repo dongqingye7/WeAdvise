@@ -101,7 +101,7 @@ class Header extends React.Component {
 //   if(Object.values(dataSnapShot.val()) == uid){
     
 db.doGetAppointment(loggedUser.uid).then(res => {
-  if(res.hasChild(uid)){
+  if(res.val()!=null){
       this.setState({
         name: res.val().name,
         message: res.val().message,

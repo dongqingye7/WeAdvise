@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container'
 
 function CourseChecklist() {
     return (
-      <div className="CourseChecklist">
+      <div className="CourseChecklist bg-white">
         <Container>
             <CourseListApp/>
         </Container>

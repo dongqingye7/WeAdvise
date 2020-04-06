@@ -10,8 +10,15 @@ import Container from 'react-bootstrap/Container';
 var course1 = {index: 1, courseName:"CSE 1105 Introduction to CSE", checked: false};
 var course2 = {index: 2, courseName:"CSE 1320 Intermediate Programming", checked: false};
 var course3 = {index: 3, courseName:"CSE 1325 Object-Oriented Programming", checked: false};
+var course4 = {index: 4, courseName:"CSE 2100 Practical Computer Hardware / Software Systems", checked: false};
+var course5 = {index: 5, courseName:"CSE 2312 Computer Organization & Assembly Language Programming", checked: false};
+var course6 = {index: 6, courseName:"CSE 2315 Discrete Structure", checked: false};
+var course7 = {index: 7, courseName:"CSE 2320 Algorithms & Data Structures", checked: false};
+var course8 = {index: 8, courseName:"CSE 3302 Programming Language", checked: false};
+var course9 = {index: 9, courseName:"CSE 3310 Fundaentals of Software Engineering", checked: false};
+var course10 = {index: 10, courseName:"CSE 3315 Theoretical Concepts in Computer Science & Engineering", checked: false};
 
-var AllCourses=[course1, course2, course3];
+var AllCourses=[course1, course2, course3, course4, course5, course6, course7, course8, course9, course10];
 
 class CourseListApp extends React.Component {
   constructor (props){
@@ -49,7 +56,8 @@ class CourseListApp extends React.Component {
 
   render (){
     return (
-      <Container>
+      <div className="card card">
+        <Container className="py-5 pr-5">
         <AppJumbotron title="Course Checklist" />
         <Row>
           <Col>
@@ -58,14 +66,19 @@ class CourseListApp extends React.Component {
         </Row>
         <br />
         <Row>
-          <Col>
+          <Col className="ml-5">
             <CourseForm  addCourse={this.addCourse}/>
             <br />          
           </Col>
 
         </Row>
-        <CourseCount count={AllCourses.length} /> 
-      </Container>
+        <Row>
+          <Col className="ml-5">
+            <CourseCount count={AllCourses.length} /> 
+          </Col>
+        </Row>
+        </Container>
+      </div>
     );
   }
 }
@@ -164,9 +177,11 @@ class CourseCount extends React.Component {
 class AppJumbotron extends React.Component {
   render (){
     return (
-      <div className="jumbotron">
+      <div>
         <h2 style={{textAlign: "center",}}>
-          {this.props.title}
+          <div className="icon icon-shape bg-primary text-white rounded-circle shadow icon-md">
+            <i className="fas fa-book" />
+          </div>{this.props.title}
         </h2>
 
       </div>

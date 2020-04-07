@@ -1,5 +1,4 @@
 import React, { Component }from 'react';
-import { Container } from '@material-ui/core';
 import img_CS from "./Flowchart_CS.jpg";
 import img_CSE from "./Flowchart_CSE.jpg";
 import img_SW from "./Flowchart_SW.jpg";
@@ -51,7 +50,7 @@ class DegreePlan extends Component {
                 <MenuItem value={"SW"}>SOFTWARE ENGINEERING</MenuItem>
                 </Select>
             </FormControl>
-                <img src={this.state.img_url} height="100%" width="100%"></img>
+                <img src={this.state.img_url} alt="degreeplan" height="100%" width="100%"></img>
             </div>
             
         );

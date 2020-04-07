@@ -6,6 +6,9 @@ import Tab from 'react-bootstrap/Tab';
 import withAuthorization from "../withAuthorization";
 import Headerh from "../Layouts/Header"
 import Row from 'react-bootstrap/Row';
+import AddSwapForm from './AddSwapForm';
+import Col from 'react-bootstrap/Col';
+import { Container } from 'reactstrap';
 
 function Classes() {
 
@@ -25,6 +28,16 @@ function Classes() {
         </Tab>
         <Tab eventKey="courseTaken" title="Courses Checklist">
           <CourseChecklist />
+        </Tab>
+        <Tab eventKey="AddSWap" title="Add/Swap Form">
+        <div className="bg-white">
+          <Container>
+          <Row className="pt-3 pb-6">
+              <AddSwapForm />
+
+          </Row>
+          </Container>
+          </div>
         </Tab>
       </Tabs>
       

@@ -56,7 +56,7 @@ class CourseListApp extends React.Component {
 
   render (){
     return (
-      <div className="card card">
+      <div className="card">
         <Container className="py-5 pr-5">
         <AppJumbotron title="Course Checklist" />
         <Row>

@@ -3,7 +3,6 @@ import { withRouter } from "react-router-dom";
 import { Alert } from "reactstrap";
 import * as routes from "../../constants/routes";
 import { auth, db } from "../../firebase";
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -179,8 +178,8 @@ class SignUpForm extends Component {
       passwordOne === "" ||
       email === "" ||
       Lastname === ""||
-      Major == ""||
-      Year_Started == ""||
+      Major === ""||
+      Year_Started === ""||
       Firstname === "";
       
 

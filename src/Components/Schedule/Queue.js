@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import {auth, db } from "../../firebase";
+import {db } from "../../firebase";
 import withAuthorization from "../withAuthorization";
-import Signup from "../SignUp/SignUp";
+
 import firebase from 'firebase/app';
 import Headerh from "../Layouts/Header"
 
 import Col from 'react-bootstrap/Col';
-import { Container, Row } from "react-bootstrap";
+import {Row } from "react-bootstrap";
 
 
 //################### Sign Up Form ###################

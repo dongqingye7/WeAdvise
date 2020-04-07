@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import withAuthorization from "../withAuthorization";
 import { db } from "../../firebase";
-import Header from "../Layouts/Header"
-import { Button, Container, Row, Col } from "reactstrap";
-import Form from './Form';
-
+import Header from "../Layouts/Header";
+import ProfileForm from './ProfileForm';
+import {Row, Col, Container} from 'react-bootstrap'
 
 class AboutMe extends Component {
   state = {
@@ -41,9 +40,9 @@ class AboutMe extends Component {
       <div>
         <Header/>
         <div
-          className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+          className="pt-5 pt-lg-5 d-flex"
           style={{
-            minHeight: "600px",
+            minHeight: "800px",
             backgroundImage:
               "url(" + require("./background.jpg") + ")",
             backgroundSize: "cover",
@@ -52,24 +51,33 @@ class AboutMe extends Component {
         >
            <span className="mask bg-gradient-default opacity-8" />
           {/* Header container */}
-          <Container className=" align-items-center" fluid>
+          <Container className=" align-items-center pt-8" fluid>
             <Row>
               <Col>
-        <h1 className="display-2 text-white text-center">{"Hello "+user.firstname+" "+user.lastname}</h1>
+        <h1 className="display-2 text-white text-center pb-3">{"My Profile"}</h1>
               </Col>
             </Row>
-            <Row>
-              <Form user={user}/>
+            <Row className="mt-3">
+              <Col>
+              </Col>
+              <Col xs={6}>
+                <div className="card w-100">
+                  <ProfileForm user={user}/>
+                </div>
+              </Col>
+              <Col>
+              </Col>
             </Row>
           </Container>
         </div>
-        {!loading && <p className="centered">Hello {username}!</p>}
+
+        {/* {!loading && <p className="centered">Hello {username}!</p>}
         {!loading && <p className="centered">Hello {role}!</p>}
         {!loading && <p className="centered">Hello {year}!</p>}
 
         <p style={{ marginTop: "80px" }}>
           NOTE: This page is only accessible by signed in users.
-        </p>
+        </p> */}
         {/* {!!users && <UserList users={users} />} */}
       </div>
     );

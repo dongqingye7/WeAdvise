@@ -115,6 +115,15 @@ db.doGetAppointment(loggedUser.uid).then(res => {
         
       });
     }
+    if(res.val()==null){
+      this.setState({
+        name: "N/A",
+        message: "N/A",
+        Student_id: "N/A",
+        Advisor: "N/A"
+        
+      });
+    }
     });
   
 //   }}

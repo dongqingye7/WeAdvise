@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import * as routes from "../../constants/routes";
 
 import withAuthorization from "../withAuthorization";
 import { db } from "../../firebase";
@@ -14,17 +15,21 @@ class AppointmentInfo extends Component {
     
   };
   ondelete = event => {
+    const { history } = this.props;
 
-    var newQ = firebase.database().ref("Queue/uid");
-    newQ.remove();
-    
+    var Q = firebase.database().ref("Queue");
+    var user = firebase.auth().currentUser;
+    var uidd= user.uid;
+
+    Q.child(uidd).remove();
+    history.push(routes.HOME);
+
       }
 
   componentDidMount() {
-   
-
     const { loggedUser } = this.props;
     db.doGetAppointment(loggedUser.uid).then(res => {
+      if(res.val()!=null){
       this.setState({
         name: res.val().name,
         message: res.val().message,
@@ -32,6 +37,16 @@ class AppointmentInfo extends Component {
         Advisor: res.val().Advisor
         
       });
+    }
+    if(res.val()==null){
+      this.setState({
+        name: "N/A",
+        message: "N/A",
+        Student_id: "N/A",
+        Advisor: "N/A"
+        
+      });
+    }
     });
 
     

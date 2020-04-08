@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import withAuthorization from "../withAuthorization";
 import { db } from "../../firebase";
+import { Button, Form } from "reactstrap";
+import firebase from 'firebase/app';
 
 class AppointmentInfo extends Component {
   state = {
@@ -11,6 +13,12 @@ class AppointmentInfo extends Component {
     Advisor:"",
     
   };
+  ondelete = event => {
+
+    var newQ = firebase.database().ref("Queue/uid");
+    newQ.remove();
+    
+      }
 
   componentDidMount() {
    
@@ -25,20 +33,24 @@ class AppointmentInfo extends Component {
         
       });
     });
+
+    
   }
 
   render() {
     const {name, message, Student_id, Advisor } = this.state;
     // console.log("dasdf", this.props.loggedUser);
     return (
-        <div className="card h-100">
+      <div className="card h-100">
         <h4 className="card-header">My Information</h4>
 
         {<p className="centered"> NAME:{name}</p>}
         {<p className="centered"> Message:{message}</p>}
         {<p className="centered"> Student Id:{Student_id}</p>}
         {<p className="centered"> Advisor:{Advisor}</p>}
-                
+        <Button fullWidth onClick={this.ondelete}
+                            variant="contained"
+                        color= "danger" >Cancel appointment</Button>
       </div>
     );
   }

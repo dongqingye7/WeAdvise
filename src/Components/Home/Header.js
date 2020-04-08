@@ -14,11 +14,13 @@ import React from "react";
 import firebase from 'firebase/app';
 
 // reactstrap components
-import { Card, CardBody, CardTitle, CardText, Container, Row, Col } from "reactstrap";
+import { Card, CardBody, CardTitle, CardText, Container, Row, Col, Form } from "reactstrap";
 import withAuthorization from "../withAuthorization";
 import { db } from "../../firebase";
 import { keys } from "@material-ui/core/styles/createBreakpoints";
 //import numInQueue from 
+import { Button } from "reactstrap";
+
 
 
 
@@ -33,7 +35,10 @@ import { keys } from "@material-ui/core/styles/createBreakpoints";
             //   }
             // }
 
-
+            const byPropKey = (propertyName, value) => () => ({
+              [propertyName]: value
+            });
+            
 
 class Header extends React.Component {
 
@@ -114,9 +119,12 @@ db.doGetAppointment(loggedUser.uid).then(res => {
   
 //   }}
 // });
-    
 
-  }
+
+
+}
+
+
   render() {
     const appLocation="ERB 642";
     
@@ -172,15 +180,16 @@ db.doGetAppointment(loggedUser.uid).then(res => {
                         >
                           My Appointment
                         </CardTitle>
-                        
-                        <div className="h5 font-weight-bold mb-0">
+                        <div className="h4 font-weight-bold mb-0">
                             <p>Adviser: {Advisor} (at {message} )
                             <br />Studnet ID: {Student_id}
                             <br />Location: {appLocation}
                             {/* <br />Time: {message} */}
 
                             </p>
+                            
                         </div>
+                        
                       </div>
                       <Col className="col-auto">
                         <div className="icon icon-shape bg-info text-white rounded-circle shadow icon-lg">

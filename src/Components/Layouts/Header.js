@@ -15,6 +15,7 @@ function Headerh() {
                 <Nav.Link href="/Home">Home</Nav.Link>
                 <Nav.Link href="/classes">Classes</Nav.Link>
                 <Nav.Link href="/q">Schedule Appointment</Nav.Link>
+                <Nav.Link href="/appinfo">Appointment Information</Nav.Link>
                 <Nav.Link href="/aboutme">About Me</Nav.Link>
                 
             </Nav>

@@ -1,18 +1,18 @@
 import React, { Component } from "react";
+import { Form, FormGroup, Label, Alert } from "reactstrap";
 
 import { withRouter } from "react-router-dom";
 
+import { SignUpLink } from "../SignUp/SignUp";
+import { PasswordForgetLink } from "../PasswordForget";
 import { auth} from "../../firebase";
 import * as routes from "../../constants/routes";
-import { Form, FormGroup, Label, Alert } from "reactstrap";
-
-
-import { PasswordForgetLink } from "../PasswordForget";
-import Button from '@material-ui/core/Button';
+import {Button} from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
+/*import LockOutlinedIcon from '@material-ui/icons/LockOutlined';*/
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -20,6 +20,7 @@ import {
   NavbarBrand,
   Navbar,
 } from "reactstrap";
+
 
 function Copyright() {
   return (
@@ -56,11 +57,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const AdvisorLogin = ({ history }) => {
-  const classes = useStyles();
 
+
+const SignInPage = ({ history }) => {
+  const classes = useStyles();
   return (
-    <>
     <div className="header">
     <Navbar
       className="navbar-top navbar-horizontal"
@@ -72,16 +73,18 @@ const AdvisorLogin = ({ history }) => {
         </NavbarBrand>
       </Container>
     </Navbar>
-    </div>
+
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
+        
         <Typography component="h1" variant="h5">
-          Advisor Sign In
+          Advisor Sign in
         </Typography>
         <form className={classes.form} noValidate>
         <SignInForm history={history} />
         <PasswordForgetLink />
+        <SignUpLink />
 
         </form>
         </div>
@@ -89,7 +92,7 @@ const AdvisorLogin = ({ history }) => {
         <Copyright />
       </Box>
     </Container>
-    </>
+    </div>
   );
 };
 
@@ -99,26 +102,28 @@ const byPropKey = (propertyName, value) => () => ({
 
 const INITIAL_STATE = {
   email: "",
-  password1: "",
+  password: "",
   error: null,
   showingAlert: false,
   role: "Advisor"
 };
 
+
 class SignInForm extends Component {
   state = { ...INITIAL_STATE };
 
   onSubmit = event => {
-    const { email1, password1, role } = this.state;
+    const { email, password,role } = this.state;
 
     const { history } = this.props;
 
     auth
-      .doSignInWithEmailAndPassword(email1, password1)
+      .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-          history.push(routes.A_HOME);
-          
+        history.push(routes.A_HOME);
+        
+        
       })
       .catch(error => {
         this.setState(byPropKey("error", error));
@@ -143,9 +148,10 @@ class SignInForm extends Component {
   };
 
   render() {
-    const { email1, password1, error, role, showingAlert } = this.state;
 
-    const isInvalid = password1 === "" || email1 === "";
+    const { email, password, error, role, showingAlert } = this.state;
+
+    const isInvalid = password === "" || email === "";
 
     return (
       <div>
@@ -155,7 +161,7 @@ class SignInForm extends Component {
           </Alert>
         )}
 
-<Form onSubmit={this.onSubmit}>
+        <Form onSubmit={this.onSubmit}>
           <FormGroup>
             <Label for="exampleEmail">Email</Label>
             <TextField
@@ -169,7 +175,7 @@ class SignInForm extends Component {
              autoComplete="email"
              autoFocus
               placeholder="user@gmail.com"
-              value={email1}
+              value={email}
               onChange={event =>
                 this.setState(byPropKey("email", event.target.value))
               }
@@ -185,7 +191,7 @@ class SignInForm extends Component {
               name="password"
               label="Password"
               type="password"
-              value={password1}
+              value={password}
               onChange={event =>
                 this.setState(byPropKey("password", event.target.value))
               }
@@ -193,13 +199,13 @@ class SignInForm extends Component {
           </FormGroup>
 
           <div className="text-center">
-            <Button disabled={isInvalid} type="submit"
+            <Button disabled={isInvalid} 
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             >
-              Adviser Sign In
+              Sign In
             </Button>
           </div>
         </Form>
@@ -211,7 +217,7 @@ class SignInForm extends Component {
   }
 }
 
-export default withRouter(AdvisorLogin);
+export default withRouter(SignInPage);
 
 export { SignInForm };
 

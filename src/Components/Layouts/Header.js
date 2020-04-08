@@ -20,8 +20,9 @@ function Headerh() {
             </Nav>
             <Nav>
                 <Nav.Link href="/help">Help</Nav.Link>
-                <NavItem>
-                  <SignOutButton />
+                <NavItem >
+                  <SignOutButton /> 
+                  
                 </NavItem>           
        </Nav>
         </Navbar.Collapse>

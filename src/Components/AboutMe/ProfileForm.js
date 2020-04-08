@@ -80,7 +80,7 @@ class ProfileForm extends Component {
 
     
     return (
-      <Form onSubmit={this.onSubmit}>
+      <Form onSubmit={this.onSubmit} href="/aboutme">
       <Form.Row className="pt-4 pl-5">
         <Form.Group as={Col} md="4" controlId="firstname" className="mr-6">
           <Form.Label>First Name</Form.Label>
@@ -159,7 +159,7 @@ class ProfileForm extends Component {
         </Form.Group>
       </Form.Row> 
       <Form.Row className="pl-5 pb-4">
-        <Button variant="primary" type="submit"   > 
+        <Button variant="primary" type="submit"    > 
           Save
         </Button>          
       </Form.Row> 

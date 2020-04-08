@@ -4,12 +4,12 @@ import { Button } from "reactstrap";
 import { auth } from "../firebase";
 
 
-
 const SignOutButton  = () => (
   
-  <Button color="info" onClick={auth.doSignOut}>
+  <Button  href = "/" color="info" onClick={auth.doSignOut} >
     Sign Out
   </Button>
+  
   
 );
 

@@ -66,7 +66,11 @@ class AppointmentInfo extends Component {
         <Button fullWidth onClick={this.ondelete}
                             variant="contained"
                         color= "danger" >Cancel appointment</Button>
+         <Button fullWidth href="/Home"
+                            variant="contained"
+                        color= "primary" >Back</Button>
       </div>
+      
     );
   }
 }

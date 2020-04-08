@@ -14,6 +14,15 @@ export const doCreateUser = (id, Firstname,Lastname, Major, Year_Started, email,
     email,
     role
   });
+  export const UpdateUser = (id, Firstname,Lastname, Major, Year_Started, email) =>
+  db.ref(`users/${id}`).update({
+    Firstname,
+    Lastname,
+    Major,
+    Year_Started,
+    email,
+    
+  });
   
   export const makeQueue = ( id, name, message, Student_id,Advisor) =>
   db.ref(`Queue/${id}`).set({

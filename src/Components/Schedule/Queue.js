@@ -10,7 +10,6 @@ import Col from 'react-bootstrap/Col';
 import {Row } from "react-bootstrap";
 
 
-//################### Sign Up Form ###################
 const INITIAL_STATE = {
   name: "",
   Time: "",

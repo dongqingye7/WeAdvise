@@ -48,7 +48,7 @@ class Queue extends Component {
             this.setState(byPropKey("error", error));
             this.timer(); //show alert message for some seconds
           });
-     
+          window.alert("You appointment has been scheduled."); 
      
 
     event.preventDefault(); //prevents refreshing
@@ -69,8 +69,8 @@ class Queue extends Component {
     return (
       <div>
         <Headerh/>
-        <div className="p-7 container">
-        <div className="card">
+        <div className="p-7 container w-75">
+        <div className="card border-info py-3 shadow">
         
           <div className="h2 text-lg-center text-bold pt-3">
           <i class="far fa-calendar-alt mr-3"></i>

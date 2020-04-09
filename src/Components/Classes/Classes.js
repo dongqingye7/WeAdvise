@@ -7,7 +7,6 @@ import withAuthorization from "../withAuthorization";
 import Headerh from "../Layouts/Header"
 import Row from 'react-bootstrap/Row';
 import AddSwapForm from './AddSwapForm';
-import Col from 'react-bootstrap/Col';
 import { Container } from 'reactstrap';
 
 function Classes() {

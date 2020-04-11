@@ -17,9 +17,9 @@ class QueueList extends Component {
     Queue:null ,
     
   };
-  ondelete = event => {
+  ondelete = () => {
     const { history } = this.props;
-
+    this.refs.remove();
     history.push(routes.HOME);
     
   };
@@ -29,6 +29,16 @@ class QueueList extends Component {
       this.setState(() => ({ Queue: snapshot.val() }))
     );
   }
+
+  // Object.keys(Queue).map(key =>
+  //   <div key={key}>{Queue[key].name}  {Queue[key].Advisor} {Queue[key].message} {Queue[key].Student_id}
+  //   {/* <Button variant="outline-danger"
+  //   onClick={this.ondelete}
+  //   >
+  //     Delete
+  //     </Button> */}
+  //   </div>
+  // )
   
   render() {
 
@@ -38,7 +48,16 @@ class QueueList extends Component {
   <section className='display-item'>
     <div className="wrapper">
         
-    { !!Queue && <UserList Queue={Queue} /> || <Button>hhh</Button> }
+    { !!Queue && Object.keys(Queue).map(key =>
+    <div key={key}>{Queue[key].name}  {Queue[key].Advisor} {Queue[key].message} {Queue[key].Student_id}
+  <Button variant="outline-danger"
+     onClick={this.ondelete}
+     >
+       Delete
+       </Button>
+    </div>
+  )
+     }
 
     </div>
   </section>
@@ -52,15 +71,7 @@ const UserList = ({ Queue }) =>
   <div>
     <h2>List of Students on Advising Queue</h2>
 
-    {Object.keys(Queue).map(key =>
-      <div key={key}>{Queue[key].name}  {Queue[key].Advisor} {Queue[key].message} {Queue[key].Student_id}
-      <Button variant="outline-danger"
-      
-      >
-        Delete
-        </Button>
-      </div>
-    )}
+    
   </div>
 
 const authCondition = authUser => !!authUser;

@@ -47,7 +47,7 @@ class DegreePlan extends Component {
                 >
                 <MenuItem value={"CS"}>Computer Science</MenuItem>
                 <MenuItem value={"CSE"}>Computer Engineering</MenuItem>
-                <MenuItem value={"SW"}>SOFTWARE ENGINEERING</MenuItem>
+                <MenuItem value={"SW"}>Software Engineering </MenuItem>
                 </Select>
             </FormControl>
                 <img src={this.state.img_url} alt="degreeplan" height="100%" width="100%"></img>

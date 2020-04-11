@@ -52,46 +52,46 @@ class Header extends React.Component {
     
   };
 
-  componentDidMount() {
-    var user = firebase.auth().currentUser;
-    var uid = user.uid;
-    var self = this;
-    var doblist = firebase.database().ref("Queue");
-        doblist.once("value", dataSnapShot => {
-          let dobobj = Object.values(dataSnapShot.val());
-          let dobkey = Object.keys(dataSnapShot.val());
+  // componentDidMount() {
+  //   var user = firebase.auth().currentUser;
+  //   var uid = user.uid;
+  //   var self = this;
+  //   var doblist = firebase.database().ref("Queue");
+  //       doblist.once("value", dataSnapShot => {
+  //         let dobobj = Object.values(dataSnapShot.val());
+  //         let dobkey = Object.keys(dataSnapShot.val());
 
-          for (var i = dataSnapShot.numChildren() ; i >0 ; i--) {
+  //         for (var i = dataSnapShot.numChildren() ; i >0 ; i--) {
             
-            if(dobkey[i] == loggedUser.uid){
-            self.setState({
-              POS: i+1
+  //           if(dobkey[i] == loggedUser.uid){
+  //           self.setState({
+  //             POS: i+1
 
-            })
-          }
-          }
-            this.setState({
-              NUMB: dataSnapShot.numChildren() ,
+  //           })
+  //         }
+  //         }
+  //           this.setState({
+  //             NUMB: dataSnapShot.numChildren() ,
 
-            })
+  //           })
 
             
-        });
+  //       });
      
    
  
-    const { loggedUser } = this.props;
+  //   const { loggedUser } = this.props;
 
    
-    db.doGetAnUnser(loggedUser.uid).then(res => {
-      this.setState({
-        Firstname: res.val().Firstname,
-        Lastname: res.val().Lastname,
-        Major: res.val().Major,
-        Year_Started: res.val().Year_Started,
+  //   db.doGetAnUnser(loggedUser.uid).then(res => {
+  //     this.setState({
+  //       Firstname: res.val().Firstname,
+  //       Lastname: res.val().Lastname,
+  //       Major: res.val().Major,
+  //       Year_Started: res.val().Year_Started,
         
-      });
-    });
+  //     });
+  //   });
 
 
 
@@ -100,23 +100,23 @@ class Header extends React.Component {
 //   for (var i=0; i<dataSnapShot.numChildren(); i++){
 //   if(Object.values(dataSnapShot.val()) == uid){
     
-db.doGetAppointment(loggedUser.uid).then(res => {
-  if(res.val()!=null){
-      this.setState({
-        name: res.val().name,
-        message: res.val().message,
-        Student_id: res.val().Student_id,
-        Advisor: res.val().Advisor
+// db.doGetAppointment(loggedUser.uid).then(res => {
+//   if(res.val()!=null){
+//       this.setState({
+//         name: res.val().name,
+//         message: res.val().message,
+//         Student_id: res.val().Student_id,
+//         Advisor: res.val().Advisor
         
-      });
-    }
-    });
+//       });
+//     }
+//     });
   
 //   }}
 // });
     
 
-  }
+  // }
   render() {
     const appLocation="ERB 642";
     
@@ -133,7 +133,7 @@ db.doGetAppointment(loggedUser.uid).then(res => {
           <div className="header-body">
             {/* Card stats */}
             <Row>
-              <Col lg="6" xl="4">
+              <Col lg="6" xl="3">
                 <Card className="card-stats mb-4 mb-xl-0">
                   <CardBody>
                     <Row>
@@ -147,13 +147,13 @@ db.doGetAppointment(loggedUser.uid).then(res => {
                         
                           <div className="h5 font-weight-bold mb-0">
                             <p>Name: {Firstname} {Lastname}
-                            <br />Major: {Major}
-                            <br />Year: {Year_Started}
+                            <br />Office: 
+                            
                             </p>
                           </div>
                       </div>
                       <Col className="col-auto">
-                        <div className="icon icon-shape bg-primary text-white rounded-circle shadow icon-lg">
+                        <div className="icon icon-shape bg-primary text-white rounded-circle shadow">
                           <i className="fas fa-address-card" />
                         </div>
                       </Col>
@@ -161,7 +161,7 @@ db.doGetAppointment(loggedUser.uid).then(res => {
                   </CardBody>
                 </Card>
               </Col>
-              <Col lg="6" xl="4">
+              <Col lg="6" xl="3">
                 <Card className="card-stats mb-4 mb-xl-0">
                   <CardBody>
                     <Row>
@@ -170,20 +170,19 @@ db.doGetAppointment(loggedUser.uid).then(res => {
                           tag="h3"
                           className="text-uppercase mb-2"
                         >
-                          My Appointment
+                          My Schedule
                         </CardTitle>
                         
                         <div className="h5 font-weight-bold mb-0">
-                            <p>Adviser: {Advisor} (at {message} )
-                            <br />Studnet ID: {Student_id}
-                            <br />Location: {appLocation}
-                            {/* <br />Time: {message} */}
-
-                            </p>
+                            
+                          <li>04/11 9:00am-10:00am</li>
+                          <li>04/12 11:00am-12:00pm</li>
+                          <li>04/13 01:00pm-03:00pm</li>
+                            
                         </div>
                       </div>
                       <Col className="col-auto">
-                        <div className="icon icon-shape bg-info text-white rounded-circle shadow icon-lg">
+                        <div className="icon icon-shape bg-info text-white rounded-circle shadow">
                           <i className="fas fa-calendar-check" />
                         </div>
                       </Col>
@@ -191,7 +190,36 @@ db.doGetAppointment(loggedUser.uid).then(res => {
                   </CardBody>
                 </Card>
               </Col>
-              <Col lg="6" xl="4">
+              <Col lg="6" xl="3">
+                <Card className="card-stats mb-4 mb-xl-0">
+                  <CardBody>
+                    <Row>
+                      <div className="col">
+                      <CardTitle
+                          tag="h3"
+                          className="text-uppercase mb-2"
+                        >
+                          Current student
+                      </CardTitle>
+                      <div className="h5 font-weight-bold mb-0">
+                            <p>Name: {Firstname} {Lastname}
+                            <br />ID: 
+                            <br />Major: 
+                            </p>
+                          </div>
+                      </div>
+                      <Col className="col-auto">
+                        <div className="icon icon-shape bg-indigo text-white rounded-circle shadow">
+                          <i className="fas fa-user-graduate" />
+                        </div>
+                      </Col>
+                    </Row>
+                  </CardBody>
+                  
+                </Card>
+                
+              </Col>
+              <Col lg="6" xl="3">
                 <Card className="card-stats mb-4 mb-xl-0">
                   <CardBody>
                     <Row>
@@ -203,15 +231,11 @@ db.doGetAppointment(loggedUser.uid).then(res => {
                           Current Queue
                       </CardTitle>
                       <div className="h5 font-weight-bold mb-0">
-                            <p>There are {NUMB} people waiting.
-                            <br />
-                            <br />You are at - {POS} position in the queue.
-                            <br />
-                            </p>
-                          </div>
+                            <p>There are {NUMB} people waiting.</p>
+                      </div>
                       </div>
                       <Col className="col-auto">
-                        <div className="icon icon-shape bg-success text-white rounded-circle shadow icon-lg">
+                        <div className="icon icon-shape bg-success text-white rounded-circle shadow">
                           <i className="fas fa-users" />
                         </div>
                       </Col>
@@ -219,6 +243,7 @@ db.doGetAppointment(loggedUser.uid).then(res => {
                   </CardBody>
                   
                 </Card>
+                
               </Col>
             </Row>
           </div>

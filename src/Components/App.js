@@ -17,6 +17,8 @@ import AdvisorHome from "./Advisor/AdvisorHome";
 import AdvisorLogin from "./Advisor/AdvisorLogin";
 import LandingPage from "./LandingPage/Landing";
 import AppointmentInfo from "./Home/Appointmentinfo";
+import QueueList from "./QueueList";
+
 
 
 
@@ -51,6 +53,7 @@ function App() {
       <Route exact path={routes.LANDING} component={LandingPage}/>
       <Route exact path={routes.SIGN_IN} component={SignInPage} />
       <Route exact path={routes.QUEUE} component={Queue} />
+      <Route exact path={routes.QUEUE_LIST} component={QueueList} />
        <Route exact path={routes.A_LOGIN} component={AdvisorLogin} />
       <Route exact path={routes.A_HOME} component={AdvisorHome} />
       <Route exact path={routes.A_ABOUT} component={AdvisorAbout} />

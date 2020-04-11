@@ -22,6 +22,7 @@ class AppointmentInfo extends Component {
     var uidd = user.uid;
 
     Q.child(uidd).remove();
+    
     window.alert("You appointment has been cancelled.");
     history.push(routes.HOME);
     

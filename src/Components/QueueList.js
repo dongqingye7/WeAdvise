@@ -32,26 +32,6 @@ class QueueList extends Component {
   }
 
   render() {
-<<<<<<< HEAD
-    const { Queue } = this.state;
-    return (
-      <div className='container'>
-  <section className='display-item'>
-    <div className="wrapper">
-    <h2>List of Students on Advising Queue</h2>
-
-    { Object.keys(Queue).map(key =>
-    <div key={key}>{Queue[key].name}  {Queue[key].Advisor} {Queue[key].message} {Queue[key].Student_id}
-      <Button variant="outline-danger" onClick={this.ondelete( key)} > Delete</Button>
-      </div>
-  )
-     }
-    </div>
-  </section>
-</div>
-    );}
-=======
-    
     const { Queue } = this.state;
     return (
       <>
@@ -90,9 +70,7 @@ class QueueList extends Component {
     </TableContainer>
     </div>
     </>
-    );
-    }
->>>>>>> 516632bcc1fde61e9a8c6d864e93f968ffd0886a
+    );}
 }
 
 

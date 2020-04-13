@@ -5,7 +5,7 @@ import withAuthorization from "../withAuthorization";
 import Header from "./Header.js";
 import {Container,Card, CardHeader, CardContent} from '@material-ui/core';
 import Header1 from "./AdvisorHeader";
-import Headerh from "../Layouts/Header"
+import Navbar from "./Navbar"
 import Footer from "../Layouts/Footer/AuthFooter"
 
 
@@ -14,7 +14,7 @@ class AdvisorHome extends React.Component {
   render() {
   return (
     <>
-    <Headerh/>
+    <Navbar/>
     <div className="bg-gradient-info pt-7 pb-4">
     <Container>
       <Header />

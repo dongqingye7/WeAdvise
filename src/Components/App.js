@@ -18,7 +18,7 @@ import AdvisorLogin from "./Advisor/AdvisorLogin";
 import LandingPage from "./LandingPage/Landing";
 import AppointmentInfo from "./Home/Appointmentinfo";
 import QueueList from "./QueueList";
-
+import AdvisorClass from './Classes/AdvisorClass';
 
 
 
@@ -58,7 +58,7 @@ function App() {
       <Route exact path={routes.A_HOME} component={AdvisorHome} />
       <Route exact path={routes.A_ABOUT} component={AdvisorAbout} />
       <Route exact path={routes.A_INFO} component={AppointmentInfo} />
-
+      <Route exact path={routes.A_CLASS} component={AdvisorClass} />
 
       </div>
     </Router>

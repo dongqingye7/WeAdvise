@@ -13,5 +13,5 @@ export const A_LOGIN ="/advisor-login"
 export const A_HOME ="/advisor-home"
 export const A_ABOUT ="/advisor-about"
 export const A_INFO ="/appinfo"
-
+export const A_CLASS ="/advisor-class"
 

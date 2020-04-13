@@ -8,19 +8,17 @@ function Headerh() {
   
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-gradient-info fixed-top font-weight-bold" variant="dark">
-    <Navbar.Brand href="/Home">We Advise</Navbar.Brand>
+    <Navbar.Brand href="/advisor-home">We Advise</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-                <Nav.Link href="/Home">Home</Nav.Link>
-                <Nav.Link href="/classes">Course</Nav.Link>
-                <Nav.Link href="/q">Schedule Appointment</Nav.Link>
-                <Nav.Link href="/appinfo">Appointment Information</Nav.Link>
-                <Nav.Link href="/aboutme">About Me</Nav.Link>
+                <Nav.Link href="/advisor-home">Home</Nav.Link>
+                <Nav.Link href="/advisor-class">Course</Nav.Link>
+                <Nav.Link href="/qlist">Queue</Nav.Link>
+                <Nav.Link href="/advisor-about">About Me</Nav.Link>
                 
             </Nav>
             <Nav>
-                <Nav.Link href="/help">Help</Nav.Link>
                 <NavItem >
                   <SignOutButton /> 
                   

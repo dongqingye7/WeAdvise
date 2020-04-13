@@ -17,8 +17,8 @@ class QueueList extends Component {
    }
     ondelete = (key) => {
       const { history } = this.props; 
-          var Q= firebase.database().ref("Queue");
-         Q.child(key).name.remove(); 
+        //   var Q= firebase.database().ref("Queue");
+        //  Q.child(key).name.remove(); 
          
   
       console.log("this is the keuy ---------------------------"+ key);

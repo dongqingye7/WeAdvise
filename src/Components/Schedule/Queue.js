@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import {db } from "../../firebase";
 import withAuthorization from "../withAuthorization";
+import * as routes from "../../constants/routes";
 
 import firebase from 'firebase/app';
 import Headerh from "../Layouts/Header"
@@ -36,7 +37,8 @@ class Queue extends Component {
     const {  name, Time, St_id, Advisor} = this.state;
         //creating a user in the database after the sign up through Firebase auth API
         
-        
+        const { history } = this.props;
+
         db.makeQueue( firebase.auth().currentUser.uid, name, Time, St_id, Advisor)
           .then(() => {
             this.setState({
@@ -50,6 +52,7 @@ class Queue extends Component {
           });
           window.alert("You appointment has been scheduled."); 
      
+            history.push(routes.HOME); //redirects to Home Page
 
     event.preventDefault(); //prevents refreshing
   };

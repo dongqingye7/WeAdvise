@@ -63,15 +63,15 @@ class Header extends React.Component {
     var self = this;
     var doblist = firebase.database().ref("Queue");
         doblist.once("value", dataSnapShot => {
-          let dobobj = Object.values(dataSnapShot.val());
-          let dobkey = Object.keys(dataSnapShot.val());
+          if(dataSnapShot.val() != null){
 
-          for (var i = dataSnapShot.numChildren() ; i >0 ; i--) {
+         // let dobobj = Object.values(dataSnapShot.val());
+          let dobkey = Object.keys(dataSnapShot.val());
+          for (var i =0  ; i <dataSnapShot.numChildren() ; i++) {
             
             if(dobkey[i] == loggedUser.uid){
             self.setState({
               POS: i+1
-
             })
           }
           }
@@ -79,7 +79,13 @@ class Header extends React.Component {
               NUMB: dataSnapShot.numChildren() ,
 
             })
-
+          }
+          else{
+            this.setState({
+              POS: "0",
+              NUMB:"no"
+            })
+          }
             
         });
      

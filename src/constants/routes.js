@@ -4,6 +4,7 @@ export const LANDING = "/";
 export const HOME = "/Home";
 export const ACCOUNT = "/account";
 export const PASSWORD_FORGET = "/pw-forget";
+export const PASSWORD_CHANGE = "/pw-change";
 export const STUDENT_PAGE = "/spage";
 export const ABOUTME ="/AboutMe"
 export const QUEUE ="/q"

@@ -151,6 +151,10 @@ class PasswordForgetForm extends Component {
             >
               Reset My Password
             </Button>
+
+            <Button href="/signin">
+              Back
+            </Button>
           </div>
         </Form>
       </div>

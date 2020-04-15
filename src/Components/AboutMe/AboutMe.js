@@ -3,7 +3,9 @@ import withAuthorization from "../withAuthorization";
 import { db } from "../../firebase";
 import Header from "../Layouts/Header";
 import ProfileForm from './ProfileForm';
-import {Row, Col, Container} from 'react-bootstrap'
+import {Row, Col, Container, Button} from 'react-bootstrap'
+import PasswordChangeLink from "../PasswordChange";
+
 
 class AboutMe extends Component {
   state = {
@@ -64,6 +66,7 @@ class AboutMe extends Component {
                 <div className="card w-100">
                   <ProfileForm user={user}/>
                 </div>
+
               </Col>
               <Col>
               </Col>

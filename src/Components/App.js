@@ -27,6 +27,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import PasswordChangeForm from "./PasswordChange";
 
 function App() {
   return (
@@ -47,6 +48,11 @@ function App() {
         exact
         path={routes.PASSWORD_FORGET}
         component={PasswordForgetPage}
+      />
+      <Route
+        exact
+        path={routes.PASSWORD_CHANGE}
+        component={PasswordChangeForm}
       />
       <Route exact path={routes.SIGN_UP} component={SignUpPage} />
       <Route exact path={routes.ACCOUNT} component={AccountPage} />

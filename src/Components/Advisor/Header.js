@@ -43,7 +43,7 @@ class Header extends React.Component {
     Lastname:"",
     Major:"",
     Year_Started:"",
-    name:" ",
+    name:"",
     message:"",
     Student_id:"",
     Advisor:"",
@@ -52,71 +52,48 @@ class Header extends React.Component {
     
   };
 
-  // componentDidMount() {
-  //   var user = firebase.auth().currentUser;
-  //   var uid = user.uid;
-  //   var self = this;
-  //   var doblist = firebase.database().ref("Queue");
-  //       doblist.once("value", dataSnapShot => {
-  //         let dobobj = Object.values(dataSnapShot.val());
-  //         let dobkey = Object.keys(dataSnapShot.val());
-
-  //         for (var i = dataSnapShot.numChildren() ; i >0 ; i--) {
-            
-  //           if(dobkey[i] == loggedUser.uid){
-  //           self.setState({
-  //             POS: i+1
-
-  //           })
-  //         }
-  //         }
-  //           this.setState({
-  //             NUMB: dataSnapShot.numChildren() ,
-
-  //           })
-
-            
-  //       });
+  componentDidMount() {
+    var user = firebase.auth().currentUser;
+    var uid = user.uid;
+    var self = this;
+    var doblist = firebase.database().ref("Queue");
+        doblist.once("value", dataSnapShot => {
+          let dobobj = Object.values(dataSnapShot.val());
+          let dobkey = Object.keys(dataSnapShot.val());
+          for (var i = dataSnapShot.numChildren() ; i >0 ; i--) {
+            if(dobkey[i] == loggedUser.uid){
+            self.setState({
+              POS: i+1
+            })
+            console.log("myyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"+ this.POS)
+          }
+          }
+            this.setState({
+              NUMB: dataSnapShot.numChildren() ,
+            })
+        });
      
-   
- 
-  //   const { loggedUser } = this.props;
+    const { loggedUser } = this.props;
 
    
-  //   db.doGetAnUnser(loggedUser.uid).then(res => {
-  //     this.setState({
-  //       Firstname: res.val().Firstname,
-  //       Lastname: res.val().Lastname,
-  //       Major: res.val().Major,
-  //       Year_Started: res.val().Year_Started,
+    db.doGetAnUnser(loggedUser.uid).then(res => {
+      this.setState({
+        Firstname: res.val().Firstname,
+        Lastname: res.val().Lastname,
+        Major: res.val().Major,
+        Year_Started: res.val().Year_Started,
         
-  //     });
-  //   });
+      });
+    });
 
 
 
-// var doblist = firebase.database().ref("Queue");
-// doblist.once("value", dataSnapShot => {
-//   for (var i=0; i<dataSnapShot.numChildren(); i++){
-//   if(Object.values(dataSnapShot.val()) == uid){
-    
-// db.doGetAppointment(loggedUser.uid).then(res => {
-//   if(res.val()!=null){
-//       this.setState({
-//         name: res.val().name,
-//         message: res.val().message,
-//         Student_id: res.val().Student_id,
-//         Advisor: res.val().Advisor
-        
-//       });
-//     }
-//     });
-  
-//   }}
-// });
-    
 
-  // }
+
+
+
+
+  }
   render() {
     const appLocation="ERB 642";
     
@@ -147,7 +124,7 @@ class Header extends React.Component {
                         
                           <div className="h5 font-weight-bold mb-0">
                             <p>Name: {Firstname} {Lastname}
-                            <br />Office: 
+                            <br />Office: {Major}
                             
                             </p>
                           </div>
@@ -202,9 +179,9 @@ class Header extends React.Component {
                           Current student
                       </CardTitle>
                       <div className="h5 font-weight-bold mb-0">
-                            <p>Name: {Firstname} {Lastname}
-                            <br />ID: 
-                            <br />Major: 
+                            <p>Name: {name}
+                            <br />ID: {Student_id}
+                            <br />Major: {message}
                             </p>
                           </div>
                       </div>

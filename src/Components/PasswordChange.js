@@ -90,6 +90,10 @@ class PasswordChangeForm extends Component {
             <Button disabled={isInvalid} type="submit">
               Change My Password
             </Button>
+
+            <Button href="/aboutme">
+              Back
+            </Button>
           </div>
         </Form>
       </div>

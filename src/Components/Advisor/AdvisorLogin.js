@@ -83,8 +83,6 @@ const SignInPage = ({ history }) => {
         </Typography>
         <form className={classes.form} noValidate>
         <SignInForm history={history} />
-        <PasswordForgetLink />
-        <SignUpLink />
 
         </form>
         </div>
@@ -113,22 +111,27 @@ class SignInForm extends Component {
   state = { ...INITIAL_STATE };
 
   onSubmit = event => {
-    const { email, password,role } = this.state;
+    const { email, password } = this.state;
 
     const { history } = this.props;
+    if (email === "chris.conly@uta.edu") {
+      auth
+        .doSignInWithEmailAndPassword(email, password)
+        .then(() => {
+          this.setState({ ...INITIAL_STATE });
+          history.push(routes.A_HOME);
+          
+          
+        })
+        .catch(error => {
+          this.setState(byPropKey("error", error));
+          this.timer(); //defined below
+        });
 
-    auth
-      .doSignInWithEmailAndPassword(email, password)
-      .then(() => {
-        this.setState({ ...INITIAL_STATE });
-        history.push(routes.A_HOME);
-        
-        
-      })
-      .catch(error => {
-        this.setState(byPropKey("error", error));
-        this.timer(); //defined below
-      });
+      }
+      else{
+        window.alert("This login is only available for Advisor.")
+      }
 
     event.preventDefault();
   };
@@ -220,5 +223,3 @@ class SignInForm extends Component {
 export default withRouter(SignInPage);
 
 export { SignInForm };
-
-

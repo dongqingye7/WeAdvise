@@ -41,5 +41,7 @@ export const numInQueue = uid => db.ref(`Queue/${uid}`).once("value", dataSnapSh
 
 // other APIs could come below
 export const doGetAppointment = uid => db.ref(`Queue/${uid}`).once("value");
+export const doGetAppointment1 = () => db.ref(`Queue`).once("value");
+
 export const doGetQueue = () => db.ref(`Queue`).once("value");
 

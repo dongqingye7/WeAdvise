@@ -30,7 +30,6 @@ class Queue extends Component {
   state = {
     ...INITIAL_STATE
   };
-
   
 
   onSubmit = event => {
@@ -58,7 +57,9 @@ class Queue extends Component {
   };
 
  
+  componentDidMount() {
 
+  }
   render() {
     const {
       name,

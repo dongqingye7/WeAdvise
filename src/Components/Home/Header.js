@@ -53,7 +53,8 @@ class Header extends React.Component {
     Student_id:"",
     Advisor:"",
     NUMB:"",
-    POS:""
+    POS:"",
+    office:""
     
   };
 
@@ -121,6 +122,32 @@ db.doGetAppointment(loggedUser.uid).then(res => {
         
       });
     }
+    if(res.val()!=null){
+    if (res.val().Advisor == "Linda Barasch"){
+      this.setState({
+        office: "ERB 643"
+      })
+    }
+
+    if (res.val().Advisor == "Katy Pedone"){
+      this.setState({
+        office: "ERB 645"
+      })
+    }
+
+    if (res.val().Advisor == "Chris Conly"){
+      this.setState({
+        office: "ERB 642"
+      })
+    }
+
+    if (res.val().Advisor == "Melissa Rose"){
+      this.setState({
+        office: "ERB 644"
+      })
+    }
+  }
+    
     if(res.val()==null){
       this.setState({
         name: "N/A",
@@ -145,7 +172,7 @@ db.doGetAppointment(loggedUser.uid).then(res => {
     
 
     
-    const {Firstname, Lastname, Major, Year_Started, name, message, Student_id, Advisor, NUMB,POS } = this.state;
+    const {Firstname, Lastname, Major, Year_Started, name, message, Student_id, Advisor, NUMB,POS, office } = this.state;
    
     
     // console.log("dasdf", this.props.loggedUser);
@@ -198,7 +225,7 @@ db.doGetAppointment(loggedUser.uid).then(res => {
                         <div className="h4 font-weight-bold mb-0">
                             <p>Adviser: {Advisor} (at {message} )
                             <br />Studnet ID: {Student_id}
-                            <br />Location: {appLocation}
+                            <br />Location: {office}
                             {/* <br />Time: {message} */}
 
                             </p>

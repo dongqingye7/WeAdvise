@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
 
+import Header from "./Layouts/Header";
 import { auth } from "../firebase";
+import Col from 'react-bootstrap/Col';
+import {Row } from "react-bootstrap";
 
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value
@@ -57,7 +60,17 @@ class PasswordChangeForm extends Component {
             {error.message}
           </Alert>
         )}
-
+        <Header/>
+        <div className="p-7 container w-75">
+        <div className="card p-5 shadow">
+          <div className="h2 text-lg-center text-bold pt-3">
+          <i class="fas fa-key mr-3"></i>
+            Change My Password
+          </div>  
+      <Row className="pt-4">
+        <Col>
+        </Col>
+        <Col>
         <Form onSubmit={this.onSubmit}>
           <FormGroup>
             <Label for="examplePassword1">New Password</Label>
@@ -86,16 +99,22 @@ class PasswordChangeForm extends Component {
             />
           </FormGroup>
 
-          <div className="text-center">
-            <Button disabled={isInvalid} type="submit">
-              Change My Password
+          <div className="text-center p-3">
+            <Button disabled={isInvalid} type="submit" outline color="danger">
+              Update
             </Button>
 
-            <Button href="/aboutme">
+            <Button href="/aboutme" outline color="primary">
               Back
             </Button>
           </div>
         </Form>
+        </Col>
+        <Col>
+        </Col>
+        </Row>
+        </div>
+      </div>
       </div>
     );
   }

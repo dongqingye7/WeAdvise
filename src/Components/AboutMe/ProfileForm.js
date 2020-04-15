@@ -159,18 +159,23 @@ class ProfileForm extends Component {
         </Form.Group>
 
       </Form.Row> 
-      <Button href="pw-change">Change Password</Button>
+      
 
-      <Form.Row className="pl-5 pb-4">
+      <Form.Row className="px-4 pb-5 text-center">
+        <div className="col">
+          <Button href="pw-change">Change Password</Button>
+        </div>
+        <div className="col">
+
+        </div>
+        <div className="col">          
         <Button variant="primary" type="submit"    > 
-          Save
-        </Button>          
-      </Form.Row> 
-      <Form.Row className="pl-5 pb-4">
+            Save
+          </Button> 
         <Button variant="danger" href="/Home"    > 
           Back
-        </Button>    
-            
+        </Button> 
+        </div>
       </Form.Row> 
 
       </Form>

@@ -122,6 +122,7 @@ db.doGetAppointment(loggedUser.uid).then(res => {
         
       });
     }
+    if(res.val()!=null){
     if (res.val().Advisor == "Linda Barasch"){
       this.setState({
         office: "ERB 643"
@@ -145,6 +146,7 @@ db.doGetAppointment(loggedUser.uid).then(res => {
         office: "ERB 644"
       })
     }
+  }
     
     if(res.val()==null){
       this.setState({

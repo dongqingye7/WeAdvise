@@ -106,7 +106,6 @@ class Header extends React.Component {
     });
 
 
-
 // var doblist = firebase.database().ref("Queue");
 // doblist.once("value", dataSnapShot => {
 //   for (var i=0; i<dataSnapShot.numChildren(); i++){

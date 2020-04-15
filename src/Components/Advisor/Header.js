@@ -58,6 +58,8 @@ class Header extends React.Component {
     var self = this;
     var doblist = firebase.database().ref("Queue");
         doblist.once("value", dataSnapShot => {
+          if(dataSnapShot.val() != null){
+
           let dobobj = Object.values(dataSnapShot.val());
           let dobkey = Object.keys(dataSnapShot.val());
           for (var i = dataSnapShot.numChildren() ; i >0 ; i--) {
@@ -71,6 +73,7 @@ class Header extends React.Component {
             this.setState({
               NUMB: dataSnapShot.numChildren() ,
             })
+          }
         });
      
     const { loggedUser } = this.props;

@@ -16,14 +16,15 @@ import {Table, TableContainer, Paper, TableHead, TableRow, TableCell, TableBody,
 class QueueList extends Component {
    state = {
     Queue:[] ,
+    key: ""
    }
     ondelete = (key) => {
       const { history } = this.props; 
-        //   var Q= firebase.database().ref("Queue");
-        //  Q.child(key).name.remove(); 
+          var Q= firebase.database().ref("Queue");
+          // Q.child(key).remove(); 
          
-  
-      console.log("this is the keuy ---------------------------"+ key);
+  var p = Q.child(key);
+  p.remove();
       }; 
   componentDidMount() {
    db.doGetQueue().then(snapshot =>
@@ -58,12 +59,10 @@ class QueueList extends Component {
               <TableCell >{Queue[key].Advisor}</TableCell>
               <TableCell >{Queue[key].message}</TableCell>
               <TableCell >{Queue[key].Student_id}</TableCell>
-              <TableCell ><Button variant="outline-danger" onClick={this.ondelete}>Delete</Button></TableCell>
+              <TableCell ><Button variant="outline-danger" onClick={this.ondelete(key)}>Delete</Button></TableCell>
 
         </TableRow>
-  //   <div key={key}>{Queue[key].name}  {Queue[key].Advisor} {Queue[key].message} {Queue[key].Student_id}
-  // <Button variant="outline-danger" onClick={this.ondelete}>Delete</Button>
-  //   </div>
+ 
   )}
       </TableBody>
     </Table>

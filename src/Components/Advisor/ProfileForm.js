@@ -56,7 +56,7 @@ class ProfileForm extends Component {
         ...INITIAL_STATE,
         
       });
-      history.push(routes.ABOUTME); //redirects to Home Page
+      history.push(routes.A_ABOUT); //redirects to Home Page
 
     })
 
@@ -77,10 +77,10 @@ class ProfileForm extends Component {
 
   render() { 
     const { Firstname, Lastname, Major, Year_Started, email } = this.state;
-
+ 
     
     return (
-      <Form onSubmit={this.onSubmit} href="/aboutme">
+      <Form onSubmit={this.onSubmit} href="/advisor-about">
       <Form.Row className="pt-4 pl-5">
         <Form.Group as={Col} md="4" controlId="firstname" className="mr-6">
           <Form.Label>First Name</Form.Label>

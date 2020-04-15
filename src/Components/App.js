@@ -40,7 +40,7 @@ function App() {
           <Route path='/aboutme' component={AboutMe} />
           <Route path='/schedule' component={Schedule} />
           <Route path='/classes' component={Classes} />
-          {/* <Route path='/signout' component={Signout} /> */}
+          {/* <Route path='/advisor-about' component={AdvisorAbout} />  */}
 
           <Route path='/help' component={Help} />
         </Switch>

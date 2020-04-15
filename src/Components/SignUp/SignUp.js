@@ -305,23 +305,23 @@ class SignUpForm extends Component {
               }
             />
           </Grid>
-
           <div/>
-          <Typography component="h1" variant="h5" className="ml-2 mt-3">
-            <Button disabled={isInvalid} type="submit"
-            fullWidth
-            padding = "30px"
-            variant="contained"
-            color="primary">
-              Sign Up
-            </Button>
-            
-            <Button href="/signin" variant="contained" >
-            Back To Login
-            </Button>
-          </Typography> 
           </Grid>
-        </form>
+          <div className="row text-center pt-3">
+            <div className="col">
+              <Button disabled={isInvalid} type="submit"
+              variant="contained"
+              color="primary">
+                Sign Up
+              </Button>              
+            </div>
+            <div className="col">
+              <Button href="/signin" variant="contained" >
+              Back
+              </Button>              
+            </div>
+          </div>
+          </form>
 
         <Box mt={5}>
         <Copyright />

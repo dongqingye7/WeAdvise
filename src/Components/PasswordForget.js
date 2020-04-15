@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
+import {Form, FormGroup, Label, Input, Alert } from "reactstrap";
 import Grid from "@material-ui/core/Grid";
 import { Typography, Box, CssBaseline, makeStyles } from "@material-ui/core";
 import { auth } from "../firebase";
 import * as routes from "../constants/routes";
 import { NavbarBrand, Navbar, Container } from "reactstrap";
+import {Button} from 'react-bootstrap'
 
 function Copyright() {
   return (
@@ -141,20 +142,25 @@ class PasswordForgetForm extends Component {
             />
           </FormGroup>
 
-          <div className="text-center">
+          <div className="row text-center">
+
+            <div className="col">
             <Button
               disabled={isInvalid}
               type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
+              variant="primary"
             >
-              Reset My Password
-            </Button>
-
+              Reset
+            </Button>             
+            </div>
+            <div className="col">
             <Button href="/signin">
               Back
-            </Button>
+            </Button>            
+            </div>
+
+
+
           </div>
         </Form>
       </div>

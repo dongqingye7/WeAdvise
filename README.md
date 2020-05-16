@@ -1,8 +1,7 @@
 # WE ADVISE UTA ADVISING SYSTEM
 
 ## Project Demo Video
-
-https://youtu.be/JmYkfgGT0BQ
+[![Watch the video](https://img.youtube.com/vi/JmYkfgGT0BQ/hqdefault.jpg)](https://youtu.be/JmYkfgGT0BQ)
 
 ## Try it out on AWS
 

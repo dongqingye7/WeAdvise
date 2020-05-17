@@ -15,6 +15,34 @@ WeAdvise is a web app in which facilitates either an advisor or a student regard
 
 "UTA Advising" project has the mission to accomplish the above vision making easier for advisors and students. So, we are going to build the web application. The web will have the names of advisors with their time table of advising. Students have to register themselves with valid UTA email and student ID. The student will have their account where they will put their courses taken in the chart and could also add those courses they want to take in the coming semesters. So, the advisors will look at the chart of taken courses and required courses making easier for both as it will also validate the meet of prerequisites. It will also track the progress of the degree.
 
+## Project Presentation Poster
+![alt text](https://github.com/dongqingye7/WeAdvise/blob/ashrit/poster.png?raw=true)
+
+## Web Structure
+![alt text](https://github.com/dongqingye7/WeAdvise/blob/ashrit/We%20Advise.png?raw=true)
+
+## Web Design
+
+### Homepage
+![alt text](https://github.com/dongqingye7/WeAdvise/blob/ashrit/img/Homepage.png?raw=true)
+
+### Course Checklist
+![alt text](https://github.com/dongqingye7/WeAdvise/blob/ashrit/img/CourseChecklist.png?raw=true)
+
+### Degree Plan
+![alt text](https://github.com/dongqingye7/WeAdvise/blob/ashrit/img/DegreePlan.png?raw=true)
+
+### Add/Swap Form
+![alt text](https://github.com/dongqingye7/WeAdvise/blob/ashrit/img/Add_Swap_Form.png?raw=true)
+
+### Appointment Schedule Form
+![alt text](https://github.com/dongqingye7/WeAdvise/blob/ashrit/img/RequestForm.png?raw=true)
+
+### Profile
+![alt text](https://github.com/dongqingye7/WeAdvise/blob/ashrit/img/Profile.png?raw=true)
+
+### FAQ Page
+![alt text](https://github.com/dongqingye7/WeAdvise/blob/ashrit/img/FAQ.png?raw=true)
 
 #### `DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING THE UNIVERSITY OF TEXAS AT ARLINGTON`
 
